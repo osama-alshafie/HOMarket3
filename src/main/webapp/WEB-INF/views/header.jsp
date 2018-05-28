@@ -80,11 +80,12 @@
                     <a href='<spring:url value="/product/productInventory"/>'>Products</a>
                 </li>
                 
-                <li>
-                    <a href="<spring:url value="/register"></spring:url>">Registeration</a>
-                </li>
                 
                 <sec:authorize access="isAnonymous()">
+                    <li>
+	                    <a href="<spring:url value="/register"></spring:url>">Registeration</a>
+	                </li>
+                
                     <li>
 	                    <a href="<spring:url value="j_spring_security_check"></spring:url>">Log in</a>
 	                </li>
@@ -137,11 +138,13 @@
 	                        </li>
                         </sec:authorize>
                         
-                        <li>
-                            <a  href="<spring:url value="/register"/>" >Registeration</a>
-                        </li>
+                        
                         
                         <sec:authorize access="isAnonymous()">
+                            <li>
+	                            <a  href="<spring:url value="/register"/>" >Registeration</a>
+	                        </li>
+                        
 		                    <li>
 			                    <a href="<spring:url value="/spring_security_login"></spring:url>">Log in</a>
 			                </li>

@@ -42,9 +42,9 @@
 				users-by-username-query="select name ,password ,1 as enabled from customer where name=? " />
 
 
-			<!-- <user-service> -->
-			<!-- <user name="admin" password="admin" authorities="ROLE_ADMIN" /> -->
-			<!-- </user-service> -->
+			 <user-service>
+			    <user name="admin" password="admin" authorities="ROLE_ADMIN" />
+			 </user-service>
 
 		</authentication-provider>
 	</authentication-manager>

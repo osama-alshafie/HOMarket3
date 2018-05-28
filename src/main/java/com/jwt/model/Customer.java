@@ -15,7 +15,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class Customer {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	@Size(min = 3, max = 8, message = "Name must be between 3 an 8")
 	private String name;

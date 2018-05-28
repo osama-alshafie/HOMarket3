@@ -150,10 +150,9 @@
 
 						<div class="form-group col-lg-12 col-lg-offset-0 act">
 							<form:label class="form-group col-lg-4 col-lg-offset-0 "
-								path="inStock">Stock</form:label>
-							<form:input path="inStock"
-								cssClass="form-group col-lg-6 col-lg-offset-5 act"
-								placeholder="is in Stock" />
+								path="inStock">Status</form:label>
+							<form:checkbox path="inStock"
+								cssClass="form-group col-lg-6 col-lg-offset-5 act" />
 						</div>
 
 						<div class="form-group col-lg-12 col-lg-offset-5">
@@ -175,75 +174,6 @@
 	</div>
 
 	<jsp:include page="footer.jsp" />
-
-
-	<!-- 	=============================================================================================== -->
-
-	<spring:url value="/resources/vendor/jquery/jquery-3.2.1.min.js"
-		var="kmhome1"></spring:url>
-	<script src="${kmhome1}"></script>
-	<!-- 	=============================================================================================== -->
-	<spring:url value="/resources/vendor/animsition/js/animsition.min.js"
-		var="kmhome2"></spring:url>
-	<script src="${kmhome2}"></script>
-	<!-- 	=============================================================================================== -->
-	<spring:url value="/resources/vendor/bootstrap/js/popper.js"
-		var="kmhome3"></spring:url>
-	<script src="${kmhome3}"></script>
-	<!-- 	=============================================================================================== -->
-	<spring:url value="/resources/vendor/bootstrap/js/bootstrap.min.js"
-		var="kmhome4"></spring:url>
-	<script src="${kmhome4}"></script>
-	<!-- 	=============================================================================================== -->
-	<spring:url value="/resources/vendor/select2/select2.min.js"
-		var="kmhome5"></spring:url>
-	<script src="${kmhome5}"></script>
-
-	<!-- 	<script type="text/javascript"> -->
-	<!-- // $(".selection-1").select2({ // minimumResultsForSearch : 20, // -->
-	<!-- dropdownParent : $('#dropDownSelect1') // }); -->
-	<!-- 	</script> -->
-	<!-- 	=============================================================================================== -->
-	<spring:url value="/resources/vendor/slick/slick.min.js" var="kmhome6"></spring:url>
-	<script src="${kmhome6}"></script>
-
-
-	<spring:url value="/resources/js/slick-custom.js" var="kmhome7"></spring:url>
-	<script src="${kmhome7}"></script>
-	<!-- 	=============================================================================================== -->
-	<spring:url value="/resources/vendor/countdowntime/countdowntime.js"
-		var="kmhome8"></spring:url>
-	<script src="${kmhome8}"></script>
-	<!-- 	=============================================================================================== -->
-	<spring:url value="/resources/vendor/lightbox2/js/lightbox.min.js"
-		var="kmhome9"></spring:url>
-	<script src="${kmhome9}"></script>
-	<!-- 	=============================================================================================== -->
-	<spring:url value="/resources/vendor/sweetalert/sweetalert.min.js"
-		var="kmhome11"></spring:url>
-	<script src="${kmhome11}"></script>
-
-	<!-- 	<script type="text/javascript"> -->
-	<!-- 	// $('.block2-btn-addcart').each( // function() { // var nameProduct = -->
-	<!-- 	$(this).parent().parent().parent().find( // '.block2-name').html(); // -->
-	<!-- 	$(this).on('click', function() { // swal(nameProduct, "is added to cart -->
-	<!-- 	!", "success"); // }); // }); // $('.block2-btn-addwishlist').each( // -->
-	<!-- 	function() { // var nameProduct = -->
-	<!-- 	$(this).parent().parent().parent().find( // '.block2-name').html(); // -->
-	<!-- 	$(this).on('click', function() { // swal(nameProduct, "is added to -->
-	<!-- 	wishlist !", "success"); // }); // }); -->
-	<!-- 	</script> -->
-
-	<!-- 	=============================================================================================== -->
-	<spring:url value="/resources/vendor/parallax100/parallax100.js"
-		var="kmhome12"></spring:url>
-	<script src="${kmhome12}"></script>
-
-	<script type="text/javascript">
-		// $('.parallax100').parallax100();
-	</script>
-	<!-- 	=============================================================================================== -->
-	<spring:url value="/resources/js/main.js" var="kmhome13"></spring:url>
-	<script src="${kmhome13}"></script>
+	
 </body>
 </html>
