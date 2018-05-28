@@ -76,17 +76,17 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "/product/add", method = RequestMethod.POST)
-	public String addProduct(@Valid @ModelAttribute Product product, BindingResult br, HttpServletRequest req) {
-		if (br.hasErrors()) {
-			return "newProduct";
-		}
+	public String addProduct(/* @Valid */ @ModelAttribute Product product, BindingResult br, HttpServletRequest req) {
+		// if (br.hasErrors()) {
+		// return "newProduct";
+		// }
 		productService.AddProduct(product);
 
 		MultipartFile productImage = product.getProductImage();
 
 		String rootDir = req.getSession().getServletContext().getRealPath("/");
 
-		path = Paths.get(rootDir + "\\WEB-INF\\resources\\images\\" + product.getId() + ".png");
+		path = Paths.get(rootDir + "\\WEB-INF\\resources\\images\\uploaded\\" + product.getId() + ".png");
 
 		if (productImage != null && !productImage.isEmpty()) {
 
