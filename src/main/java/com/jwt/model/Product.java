@@ -93,6 +93,9 @@ public class Product {
 
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "product")
 	private List<CartItem> cartItemList;
+	
+	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "products")
+	private List<Category> categories;
 
 	public List<CartItem> getCartItemList() {
 		return cartItemList;
