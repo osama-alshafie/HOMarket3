@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Min;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -26,6 +27,9 @@ public class Product {
 	private int quantity;
 
 	private boolean inStock;
+
+	@Transient
+	private MultipartFile productImage;
 
 	public int getId() {
 		return id;
@@ -78,6 +82,14 @@ public class Product {
 	// =============================================================================\\
 	/* Mapping */
 	// =============================================================================\\
+
+	public MultipartFile getProductImage() {
+		return productImage;
+	}
+
+	public void setProductImage(MultipartFile productImage) {
+		this.productImage = productImage;
+	}
 
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "product")
 	private List<CartItem> cartItemList;

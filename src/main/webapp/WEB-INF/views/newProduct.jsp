@@ -94,7 +94,7 @@
 					<h2>${headerMSG}</h2>
 					<br /> <br />
 					<form:form commandName="product" cssClass="form-horizontal"
-						action="${url}" method="POST">
+						action="${url}" method="POST" enctype="multipart/form-data">
 
 						<c:if test='${title=="Edit Product"}'>
 							<form:hidden path="id" class="form-control"></form:hidden>
@@ -159,11 +159,20 @@
 							<form:errors path="inStock" cssStyle="color:#f00;"></form:errors>
 						</div>
 
+
+						<div class="size12 trans-0-4 m-t-10 m-b-10 m-r-10">
+
+							<form:label class="control-label" path="productImage" for="pic">upload picture</form:label>
+							<form:input path="productImage" id="pic" type="file"
+								Class="form:input-large" />
+						</div>
+
 						<div class="size12 trans-0-4 m-t-10 m-b-10 m-r-10">
 							<button type="submit"
 								class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
 								new Product</button>
 						</div>
+
 					</form:form>
 				</div>
 			</div>
@@ -174,6 +183,6 @@
 	</div>
 
 	<jsp:include page="footer.jsp" />
-	
+
 </body>
 </html>

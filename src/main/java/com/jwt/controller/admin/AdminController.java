@@ -1,5 +1,10 @@
 package com.jwt.controller.admin;
 
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.jwt.model.Product;
@@ -20,6 +26,7 @@ import com.jwt.service.ProductService;
 @Controller
 @RequestMapping(value = "/admin")
 public class AdminController {
+	private Path path;
 
 	@Autowired
 	private ProductService productService;
@@ -69,11 +76,28 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "/product/add", method = RequestMethod.POST)
-	public String addProduct(@Valid @ModelAttribute Product product, BindingResult br) {
+	public String addProduct(@Valid @ModelAttribute Product product, BindingResult br, HttpServletRequest req) {
 		if (br.hasErrors()) {
 			return "newProduct";
 		}
 		productService.AddProduct(product);
+
+		MultipartFile productImage = product.getProductImage();
+
+		String rootDir = req.getSession().getServletContext().getRealPath("/");
+
+		path = Paths.get(rootDir + "\\WEB-INF\\resources\\images\\" + product.getId() + ".png");
+
+		if (productImage != null && !productImage.isEmpty()) {
+
+			try {
+				productImage.transferTo(new File(path.toString()));
+			} catch (Exception e) {
+
+				throw new RuntimeException("saving file is failed", e);
+			}
+		}
+
 		return "redirect:/admin";
 	}
 
