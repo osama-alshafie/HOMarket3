@@ -16,7 +16,7 @@ public class CategoryDAOImp implements CategoryDAO {
 
 	@Autowired
 	private SessionFactory sessionFactory;
-	
+
 	@Override
 	public void AddCategory(Category category) {
 		sessionFactory.getCurrentSession().save(category);
@@ -42,8 +42,8 @@ public class CategoryDAOImp implements CategoryDAO {
 	}
 
 	@Override
-	public Category getCategoryById(int id) {
-		return (Category) sessionFactory.getCurrentSession().load(Category.class, id);
+	public Category getCategoryById(Integer id) {
+		return (Category) sessionFactory.getCurrentSession().get(Category.class, id);
 	}
 
 	@Override

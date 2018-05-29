@@ -159,6 +159,20 @@
 							<form:errors path="inStock" cssStyle="color:#f00;"></form:errors>
 						</div>
 
+						<!-- start of  List of categories to showing list of them -->
+
+						<div class="form-group">
+							<c:forEach items="${categories}" var="elements" varStatus="loop">
+								<tr>
+									<td><form:checkbox path="selectedCheckBox"
+											class="person_data" value="${elements.id}" /></td>
+									<td><c:out value='${elements.name}' /></td>
+								</tr>
+								<br>
+							</c:forEach>
+						</div>
+						<!-- End of  List -->
+
 
 						<div class="size12 trans-0-4 m-t-10 m-b-10 m-r-10">
 

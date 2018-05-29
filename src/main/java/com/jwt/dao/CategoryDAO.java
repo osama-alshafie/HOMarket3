@@ -14,7 +14,7 @@ public interface CategoryDAO {
 
     public List<Category> getAllCategories();
 
-    public Category getCategoryById(int id);
+    public Category getCategoryById(Integer id);
 
 	public Category getCategoryByName(String name);
 

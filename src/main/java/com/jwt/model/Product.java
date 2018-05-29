@@ -28,6 +28,9 @@ public class Product {
 
 	private boolean inStock;
 
+	@ElementCollection(fetch = FetchType.LAZY)
+	private List<Integer> selectedCheckBox;
+
 	@Transient
 	private MultipartFile productImage;
 
@@ -83,6 +86,22 @@ public class Product {
 	/* Mapping */
 	// =============================================================================\\
 
+	public List<Integer> getSelectedCheckBox() {
+		return selectedCheckBox;
+	}
+
+	public void setSelectedCheckBox(List<Integer> selectedCheckBox) {
+		this.selectedCheckBox = selectedCheckBox;
+	}
+
+	public List<Category> getCategories() {
+		return categories;
+	}
+
+	public void setCategories(List<Category> categories) {
+		this.categories = categories;
+	}
+
 	public MultipartFile getProductImage() {
 		return productImage;
 	}
@@ -93,8 +112,8 @@ public class Product {
 
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "product")
 	private List<CartItem> cartItemList;
-	
-	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "products")
+
+	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "products")
 	private List<Category> categories;
 
 	public List<CartItem> getCartItemList() {

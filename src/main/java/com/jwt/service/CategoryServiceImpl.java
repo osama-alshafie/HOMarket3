@@ -3,15 +3,19 @@ package com.jwt.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.jwt.dao.CategoryDAO;
 import com.jwt.model.Category;
 
+@Service
+@Transactional
 public class CategoryServiceImpl implements CategoryService {
 
 	@Autowired
 	private CategoryDAO categorydao;
-	
+
 	@Override
 	public void AddCategory(Category category) {
 		categorydao.AddCategory(category);
@@ -33,7 +37,7 @@ public class CategoryServiceImpl implements CategoryService {
 	}
 
 	@Override
-	public Category getCategoryById(int id) {
+	public Category getCategoryById(Integer id) {
 		return categorydao.getCategoryById(id);
 	}
 

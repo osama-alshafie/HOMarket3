@@ -3,6 +3,8 @@ package com.jwt.controller.admin;
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -19,7 +21,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.jwt.model.Category;
 import com.jwt.model.Product;
+import com.jwt.service.CategoryService;
 import com.jwt.service.CustomerService;
 import com.jwt.service.ProductService;
 
@@ -30,6 +34,9 @@ public class AdminController {
 
 	@Autowired
 	private ProductService productService;
+
+	@Autowired
+	private CategoryService categoryService;
 
 	@Autowired
 	private CustomerService customerService;
@@ -64,6 +71,7 @@ public class AdminController {
 	@RequestMapping(value = "/productInventory", method = RequestMethod.GET)
 	public String productInventory(Model model) {
 		model.addAttribute("products", productService.getAllProducts());
+
 		return "product";
 	}
 
@@ -72,38 +80,38 @@ public class AdminController {
 		model.addAttribute("title", "New Product");
 		model.addAttribute("headerMSG", "create a new Product");
 		model.addAttribute("product", new Product());
+		model.addAttribute("categories", categoryService.getAllCategories());
 		return "newProduct";
 	}
 
 	@RequestMapping(value = "/product/add", method = RequestMethod.POST)
-	public String addProduct(
-			/* @Valid */ @ModelAttribute Product product /*
-															 * , BindingResult
-															 * br
-															 */, HttpServletRequest req) {
-		// if (br.hasErrors()) {
-		// return "newProduct";
-		// }
+	public String addProduct(@Valid @ModelAttribute Product product, BindingResult br, HttpServletRequest req) {
+		if (br.hasErrors()) {
+			return "newProduct";
+		}
+		List<Category> cat = new ArrayList<Category>();
+		List<Integer> itemsOfCategory = product.getSelectedCheckBox();
+		for (Integer integer : itemsOfCategory) {
+			Category categoryItem = categoryService.getCategoryById(integer);
+			// categoryItem.getProducts().add(product);
+			cat.add(categoryItem);
+			// categoryService.AddCategory(categoryItem);
+		}
+		product.setCategories(cat);
 		productService.AddProduct(product);
-
+		// image configuration
+		// image configuration
+		// image configuration
 		MultipartFile productImage = product.getProductImage();
-		System.out.println("ss:" + productImage.getSize());
-
 		String rootDir = req.getSession().getServletContext().getRealPath("/");
-
 		// String filePath = req.getServletContext().getRealPath("/");
-
 		path = Paths.get(rootDir + "\\WEB-INF\\resources\\img\\" + product.getId() + ".png");
 		String destinatino = path.toString();
-
 		if (productImage != null && !productImage.isEmpty()) {
-
 			try {
 				productImage.transferTo(new File(destinatino));
 				System.out.println("Name is :" + productImage.getName());
-
 			} catch (Exception e) {
-
 				throw new RuntimeException("saving file is failed", e);
 			}
 		}
