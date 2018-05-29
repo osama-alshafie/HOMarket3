@@ -78,7 +78,8 @@ public class AdminController {
 	@RequestMapping(value = "/product/add", method = RequestMethod.POST)
 	public String addProduct(
 			/* @Valid */ @ModelAttribute Product product /*
-															 * , BindingResult br
+															 * , BindingResult
+															 * br
 															 */, HttpServletRequest req) {
 		// if (br.hasErrors()) {
 		// return "newProduct";
@@ -86,15 +87,21 @@ public class AdminController {
 		productService.AddProduct(product);
 
 		MultipartFile productImage = product.getProductImage();
+		System.out.println("ss:" + productImage.getSize());
 
 		String rootDir = req.getSession().getServletContext().getRealPath("/");
 
-		path = Paths.get(rootDir + "\\WEB-INF\\resources\\images\\" + product.getId() + ".png");
+		// String filePath = req.getServletContext().getRealPath("/");
+
+		path = Paths.get(rootDir + "\\WEB-INF\\resources\\img\\" + product.getId() + ".png");
+		String destinatino = path.toString();
 
 		if (productImage != null && !productImage.isEmpty()) {
 
 			try {
-				productImage.transferTo(new File(path.toString()));
+				productImage.transferTo(new File(destinatino));
+				System.out.println("Name is :" + productImage.getName());
+
 			} catch (Exception e) {
 
 				throw new RuntimeException("saving file is failed", e);

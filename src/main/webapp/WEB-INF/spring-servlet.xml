@@ -16,7 +16,7 @@
 	<mvc:annotation-driven />
 
 	<!-- Specifying the Resource location to load JS, CSS, Images etc -->
-	<mvc:resources mapping="/resources/**" location="WEB-INF/resources/" />
+
 
 
 
@@ -62,13 +62,18 @@
 
 	<tx:annotation-driven transaction-manager="transactionManager" />
 
-	
+
 
 	<bean id="multipartResolver"
-	class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-	<property name="maxUploadSize" value="1024000" />
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+<!-- 		<property name="maxUploadSize" value="1024000" /> -->
+		<property name="maxUploadSize" value="99999999999"/>
+		
 	</bean>
 
 	<import resource="security-config.xml" />
-
+	<mvc:resources mapping="/resources/**" location="WEB-INF/resources/" />
+	
+	
+	
 </beans>
