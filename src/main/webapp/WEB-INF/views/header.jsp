@@ -80,6 +80,19 @@
                     <a href='<spring:url value="/product/productInventory"/>'>Products</a>
                 </li>
                 
+                <sec:authorize access="hasRole('ROLE_ADMIN')">
+                    <li>
+		    			<a href='<spring:url value="/admin/category/create"/>'>New Category</a>
+	                </li>
+	                        
+	                <li>
+		    			<a href='<spring:url value="/admin/product/create"/>'>New Product</a>
+	                </li>
+	                        
+	                <li>
+		    			<a href='<spring:url value="/admin/customers"/>'>Customer Management</a>
+	                </li>
+                </sec:authorize>
                 
                 <sec:authorize access="isAnonymous()">
                     <li>
@@ -130,6 +143,10 @@
                         
                         <sec:authorize access="hasRole('ROLE_ADMIN')">
                         	<li>
+		    					<a href='<spring:url value="/admin/category/create"/>'>New Category</a>
+	                        </li>
+	                        
+	                        <li>
 		    					<a href='<spring:url value="/admin/product/create"/>'>New Product</a>
 	                        </li>
 	                        

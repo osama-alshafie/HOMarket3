@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 public class Category {
 
@@ -18,7 +20,7 @@ public class Category {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 
-	@NotNull
+	@NotEmpty(message = "Must be not empty")
 	private String name;
 
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)

@@ -151,5 +151,6 @@ public class AdminController {
 		model.addAttribute("customers", customerService.getAllCustomers());
 		return "customers";
 	}
+	
 
 }
