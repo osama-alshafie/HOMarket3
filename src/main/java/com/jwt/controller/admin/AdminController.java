@@ -23,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.jwt.model.Category;
 import com.jwt.model.Product;
+import com.jwt.service.AdminService;
 import com.jwt.service.CategoryService;
 import com.jwt.service.CustomerService;
 import com.jwt.service.ProductService;
@@ -40,6 +41,9 @@ public class AdminController {
 
 	@Autowired
 	private CustomerService customerService;
+	
+	@Autowired
+	private AdminService adminService;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String adminPage(Model model) {
@@ -89,16 +93,10 @@ public class AdminController {
 		if (br.hasErrors()) {
 			return "newProduct";
 		}
-		List<Category> cat = new ArrayList<Category>();
-		List<Integer> itemsOfCategory = product.getSelectedCheckBox();
-		for (Integer integer : itemsOfCategory) {
-			Category categoryItem = categoryService.getCategoryById(integer);
-			// categoryItem.getProducts().add(product);
-			cat.add(categoryItem);
-			// categoryService.AddCategory(categoryItem);
-		}
-		product.setCategories(cat);
-		productService.AddProduct(product);
+		
+		// service here
+		adminService.updateProduct(product.getSelectedCheckBox(), product);
+		
 		// image configuration
 		// image configuration
 		// image configuration
@@ -151,6 +149,5 @@ public class AdminController {
 		model.addAttribute("customers", customerService.getAllCustomers());
 		return "customers";
 	}
-	
 
 }
