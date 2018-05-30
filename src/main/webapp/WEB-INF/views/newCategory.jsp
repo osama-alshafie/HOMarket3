@@ -128,6 +128,23 @@
 	</div>
 
 	<jsp:include page="footer.jsp" />
+	<script type="text/javascript">
+		$(document).ready(function () {
+		    $("#category").validate({
+		        rules: {
+		            "name": {
+		                required: true
+		            }
+		        },
+		        messages: {
+		            "name": {
+		                required: "Please, enter a name"
+		            }
+		        }
+		    });
+	
+		});
+	</script>
 
 </body>
 </html>

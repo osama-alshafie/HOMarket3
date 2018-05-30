@@ -223,12 +223,12 @@
 
 					<!-- Product -->
 					<div class="row">
-						<c:forEach var="product" items="${products}">
+						<c:forEach var="category" items="${categories}">
 							<div class="col-sm-12 col-md-6 col-lg-4 p-b-50">
 								<!-- Block2 -->
 								<div
 									class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
-									<img src="${imageOfC}" alt="IMG-PRODUCT"> ${product.name}
+									<img src="${imageOfC}" alt="IMG-PRODUCT"> ${category.name}
 
 									<div class="block2-overlay trans-0-4">
 										<a href="#"
@@ -237,36 +237,8 @@
 											<i class="icon-wishlist icon_heart dis-none"
 											aria-hidden="true"></i>
 										</a>
-
-										<div class="block2-btn-addcart w-size1 trans-0-4">
-											<!-- Button -->
-											<button
-												class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-												Add to Cart</button>
-										</div>
 									</div>
 								</div>
-
-								<div class="block2-txt p-t-20">
-									<a href="product-detail.jsp"
-										class="block2-name dis-block s-text3 p-b-5">
-										${product.description} </a> <span
-										class="block2-price m-text6 p-r-5"> ${product.price} </span>
-								</div>
-
-								<a href='<spring:url value="/product-detail/${product.id}" />'>
-									ADD To Cart </a>
-								<sec:authorize access="hasRole('ROLE_ADMIN')">
-
-									<div>
-										<a
-											href='<spring:url value="/admin/product/delete/${product.id}" />'>Delete</a>
-									</div>
-									<div>
-										<a
-											href='<spring:url value="/admin/product/edit/${product.id}" />'>Edit</a>
-									</div>
-								</sec:authorize>
 							</div>
 						</c:forEach>
 					</div>

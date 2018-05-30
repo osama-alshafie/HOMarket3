@@ -80,6 +80,10 @@
                     <a href='<spring:url value="/product/productInventory"/>'>Products</a>
                 </li>
                 
+                <li>
+                    <a href='<spring:url value="/category/all"/>'>Categories</a>
+                </li>
+                
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
                     <li>
 		    			<a href='<spring:url value="/admin/category/create"/>'>New Category</a>
@@ -134,6 +138,10 @@
                         <li>
                             <a href='<spring:url value="/product/productInventory"/>'>Products</a>
                         </li>
+                        
+                        <li>
+		                    <a href='<spring:url value="/category/all"/>'>Categories</a>
+		                </li>
                         
                         <%--TODO--%>
                         <%--TODO--%>

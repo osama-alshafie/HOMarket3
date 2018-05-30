@@ -171,6 +171,9 @@
 	<spring:url value="/resources/vendor/jquery/jquery-3.2.1.min.js"
 		var="kmhome1"></spring:url>
 	<script src="${kmhome1}"></script>
+	<!--===============================================================================================-->
+<spring:url value="/resources/vendor/jquery/jquery.validate.min.js" var="kmhome1"></spring:url>
+<script src="${kmhome1}"></script>
 	<!-- 	=============================================================================================== -->
 	<spring:url value="/resources/vendor/animsition/js/animsition.min.js"
 		var="kmhome2"></spring:url>
@@ -234,6 +237,33 @@
 	<!-- 	=============================================================================================== -->
 	<spring:url value="/resources/js/main.js" var="kmhome13"></spring:url>
 	<script src="${kmhome13}"></script>
-
+	
+	<script type="text/javascript">
+		$(document).ready(function () {
+		    $("#customer").validate({
+		        rules: {
+		            "name": {
+		                required: true,
+		                minlength: 3
+		            },
+		            "email": {
+		                required: true,
+		                email: true
+		            }
+		        },
+		        messages: {
+		            "name": {
+		                required: "Please, enter a name"
+		            },
+		            "email": {
+		                required: "Please, enter an email",
+		                email: "Email is invalid"
+		            }
+		        }
+		    });
+	
+		});
+	</script>
 
 </body>
+</html>
