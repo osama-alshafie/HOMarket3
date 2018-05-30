@@ -94,6 +94,11 @@ public class Product {
 		this.selectedCheckBox = selectedCheckBox;
 	}
 
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "prod_cat", joinColumns = { @JoinColumn(name = "product_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "category_id") })
+	private List<Category> categories;
+
 	public List<Category> getCategories() {
 		return categories;
 	}
@@ -112,9 +117,6 @@ public class Product {
 
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "product")
 	private List<CartItem> cartItemList;
-
-	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "products")
-	private List<Category> categories;
 
 	public List<CartItem> getCartItemList() {
 		return cartItemList;
