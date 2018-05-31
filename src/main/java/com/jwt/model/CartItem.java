@@ -9,6 +9,7 @@ public class CartItem {
 	@GeneratedValue
 	private int id;
 	private int quantity;
+	private boolean deleted;
 
 	public int getId() {
 		return id;
@@ -25,6 +26,16 @@ public class CartItem {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
+
+	
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
+	}
+
 
 	// =============================================================================\\
 	/* Mapping */

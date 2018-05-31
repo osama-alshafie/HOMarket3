@@ -1,6 +1,7 @@
 package com.jwt.service;
 
 import com.jwt.dao.OrderDao;
+import com.jwt.model.Customer;
 import com.jwt.model.Orders;
 
 import java.util.Date;
@@ -33,6 +34,12 @@ public class OrderServiceImpl implements OrderService {
 	public void deleteOrder(Orders order) {
 
 		orderDao.deleteOrder(order);
+	}
+
+	@Override
+	public List<Orders> getOrderByCustomer() {
+		return orderDao.getOrderByCustomer();
+
 	}
 
 }

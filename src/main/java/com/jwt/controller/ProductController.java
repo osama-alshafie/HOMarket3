@@ -27,19 +27,19 @@ import com.jwt.service.ProductService;
 @Controller
 @RequestMapping(value = "/product")
 public class ProductController {
-	
+
 	@Autowired
 	private ProductService productService;
-	
+
 	@Autowired
 	private CustomerService customerService;
 
 	@Autowired
 	private CartDao cartDao;
-	
+
 	@RequestMapping(value = "/productInventory", method = RequestMethod.GET)
 	public String Products(ModelAndView model, Model models) {
-		
+
 		List<Product> allProducts = productService.getAllProducts();
 		if (allProducts != null) {
 			models.addAttribute("products", allProducts);
@@ -55,7 +55,7 @@ public class ProductController {
 
 		return "product";
 	}
-	
+
 	@RequestMapping(value = "/product-detail/{id}", method = RequestMethod.GET)
 	public String ProductDetails(Model model, @PathVariable("id") int id) {
 		Product product = productService.getProductById(id);
@@ -69,21 +69,8 @@ public class ProductController {
 	public String ProductDetailsPost(
 			/* @ModelAttribute("product") Product product, */ @PathVariable("id") int id, Model model,
 			@RequestParam("counter") int counter, HttpServletRequest request) {
-		CartItem cartItem = new CartItem();
 
-		cartItem.setProduct(productService.getProductById(id));
-		cartItem.setQuantity(counter);
-
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		User user = (User) authentication.getPrincipal();
-		Customer customUser = customerService.getCustomerByName(user.getUsername());
-		Cart cart = customUser.getCart();
-
-		cart.getCartItemList().add(cartItem);
-		cartItem.setCart(cart);
-		// cartDao.AddCartItem(cartItem);
-		cartDao.EditCart(cart);
-
+		cartDao.EditCart(counter, id);
 		return "redirect:/cart";
 	}
 

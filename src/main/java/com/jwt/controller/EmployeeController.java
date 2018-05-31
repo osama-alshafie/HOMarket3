@@ -1,5 +1,6 @@
 package com.jwt.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.criteria.Order;
@@ -108,16 +109,33 @@ public class EmployeeController {
 		return "product";
 	}
 
+	@RequestMapping(value = "/orderHistory", method = RequestMethod.GET)
+	public String OrderHistory(Model models, @ModelAttribute("orderss") final Orders orderss) {
+
+		List<Orders> orders = orderService.getOrderByCustomer();
+
+		Cart carts = cartService.getCartByCustomer();
+		List<CartItem> cartItems = carts.getCartItemList();
+		float sum = 0;
+
+		for (CartItem cartItem : cartItems) {
+			sum = sum + (cartItem.getProduct().getPrice() * cartItem.getQuantity());
+		}
+		models.addAttribute("orders", orders);
+		models.addAttribute("cartItemss", cartItems);
+		models.addAttribute("sum", sum);
+
+		return "orderHistory";
+	}
+
 	@RequestMapping(value = "/order", method = RequestMethod.GET)
 	public String Order(Model models, @ModelAttribute("orderss") final Orders orderss,
 			final RedirectAttributes redirectAttributes) {
 
 		models.addAttribute("order1", orderss);
-
 		List<CartItem> cartItems = orderss.getCart().getCartItemList();
 		float sum = 0;
 		for (CartItem cartItem : cartItems) {
-
 			sum = sum + (cartItem.getProduct().getPrice() * cartItem.getQuantity());
 		}
 		models.addAttribute("cartItemss", cartItems);
@@ -130,14 +148,15 @@ public class EmployeeController {
 	@RequestMapping(value = "/cart", method = RequestMethod.GET)
 	public String Cart(Model models) {
 
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		User user = (User) authentication.getPrincipal();
-		Customer customUser = customerService.getCustomerByName(user.getUsername());
-		Cart carts = customUser.getCart();
-
-		List<CartItem> cartItemses = carts.getCartItemList();
+		Cart carts = cartService.getCartByCustomer();
+		List<CartItem> cartItemes = carts.getCartItemList();
+		List<CartItem> cartItemses = new ArrayList<CartItem>();
+		for (CartItem cartItem : cartItemes) {
+			if (cartItem.isDeleted() == false) {
+				cartItemses.add(cartItem);
+			}
+		}
 		models.addAttribute("cartItemss", cartItemses);
-
 		return "cart";
 	}
 
@@ -169,23 +188,10 @@ public class EmployeeController {
 	}
 
 	@RequestMapping(value = "/product-detail/{id}", method = RequestMethod.POST)
-	public String ProductDetailsPost(
-			/* @ModelAttribute("product") Product product, */ @PathVariable("id") int id, Model model,
-			@RequestParam("counter") int counter, HttpServletRequest request) {
-		CartItem cartItem = new CartItem();
+	public String ProductDetailsPost(@PathVariable("id") int id, Model model, @RequestParam("counter") int counter,
+			HttpServletRequest request) {
 
-		cartItem.setProduct(productService.getProductById(id));
-		cartItem.setQuantity(counter);
-
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		User user = (User) authentication.getPrincipal();
-		Customer customUser = customerService.getCustomerByName(user.getUsername());
-		Cart cart = customUser.getCart();
-
-		cart.getCartItemList().add(cartItem);
-		cartItem.setCart(cart);
-		cartDao.EditCart(cart);
-
+		cartDao.EditCart(counter, id);
 		return "redirect:/cart";
 	}
 

@@ -9,10 +9,12 @@ public interface CartService {
 
 	public void AddCartItem(CartItem cartItem);
 
-	public void EditCart(Cart cart);
+	public void EditCart(int count, int id);
 
 	public List<Cart> getAllCarts();
 
 	public void deleteCartItems(List<CartItem> cartItemses);
+
+	public Cart getCartByCustomer();
 
 }

@@ -1,7 +1,9 @@
 package com.jwt.dao;
 
+import java.util.List;
+
+import com.jwt.model.Customer;
 import com.jwt.model.Orders;
-import com.jwt.model.Role;
 
 public interface OrderDao {
 
@@ -10,5 +12,7 @@ public interface OrderDao {
 	public void editOrder(Orders order);
 
 	public void deleteOrder(Orders order);
+
+	public List<Orders> getOrderByCustomer();
 
 }

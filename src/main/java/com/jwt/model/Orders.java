@@ -12,7 +12,6 @@ public class Orders implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue
-
 	private int id;
 	private String address;
 	private Date date;

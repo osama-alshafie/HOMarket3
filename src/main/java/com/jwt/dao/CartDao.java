@@ -9,10 +9,12 @@ public interface CartDao {
 
 	public void AddCartItem(CartItem cartItem);
 
-	public void EditCart(Cart cart);
+	public void EditCart(int counter, int id);
 
 	public void deleteCartItems(List<CartItem> cartItemses);
 
 	public List<Cart> getAllCarts();
+
+	public Cart getCartByCustomer();
 
 }

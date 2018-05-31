@@ -23,12 +23,6 @@ public class CartServiceImpl implements CartService {
 	}
 
 	@Override
-	public void EditCart(Cart cart) {
-
-		cartDao.EditCart(cart);
-	}
-
-	@Override
 	public List<Cart> getAllCarts() {
 
 		return cartDao.getAllCarts();
@@ -40,6 +34,18 @@ public class CartServiceImpl implements CartService {
 
 		cartDao.deleteCartItems(cartItemses);
 
+	}
+
+	@Override
+	public void EditCart(int count, int id) {
+
+		cartDao.EditCart(count, id);
+
+	}
+
+	@Override
+	public Cart getCartByCustomer() {
+		return cartDao.getCartByCustomer();
 	}
 
 }
