@@ -45,4 +45,9 @@ public class ProductServiceImpl implements ProductService {
     public Product getProductById(int productId) {
         return productDao.getProductById(productId);
     }
+
+	@Override
+	public List<Product> filterProductsByPrice(float min, float max) {
+		return productDao.filterProductsByPrice(min, max);
+	}
 }

@@ -128,7 +128,7 @@
 							        <div class="w-size11">
 										<!-- Button -->
 										<button
-											class="flex-c-m size4 bg7 bo-rad-15 hov1 s-text14 trans-0-4">
+											class="flex-c-m size4 bg7 bo-rad-15 hov1 s-text14 trans-0-4 btn_price_filter">
 											Filter</button>
 									</div>
 							    </div>
@@ -222,7 +222,7 @@
 					<spring:url value="/resources/images/11.jpg" var="imageOfC"></spring:url>
 
 					<!-- Product -->
-					<div class="row">
+					<div class="row products_aj">
 						<c:forEach var="product" items="${products}">
 							<div class="col-sm-12 col-md-6 col-lg-4 p-b-50">
 								<!-- Block2 -->
@@ -285,5 +285,33 @@
 
 
 	<jsp:include page="footer.jsp" />
+	
+	<script type="text/javascript">
+		$(document).ready(function () {
+		    $('.btn_price_filter').on('click', function(){
+		    	console.log('entered');
+		    	
+		    	var minPrice = $('.min').val();
+		    	var maxPrice = $('.max').val();
+		    	
+		    	console.log(minPrice);
+		    	console.log(maxPrice);
+		    	
+		    	$.ajax({
+		    		url: '<spring:url value="/product/ajax/filter" />',
+		            data: {
+		                'minPrice': minPrice,
+		                'maxPrice': maxPrice
+		            },
+		            success: function (data) {
+		            	$('.products_aj').html(data);
+		            }
+		            
+		    	});
+		    });
+	
+		});
+	</script>
+	
 </body>
 </html>

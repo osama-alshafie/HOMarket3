@@ -75,5 +75,15 @@ public class ProductController {
 		cartDao.EditCart(counter, id);
 		return "redirect:/cart";
 	}
+	
+	@RequestMapping(value = "/ajax/filter", method = RequestMethod.GET)
+	public ModelAndView filterProduct(ModelAndView model, @RequestParam("minPrice") float minPrice, 
+			@RequestParam("maxPrice") float maxPrice) {
+		
+		model.addObject("products", productService.filterProductsByPrice(minPrice, maxPrice));
+		model.setViewName("products_list");
+		
+		return model;
+	}
 
 }

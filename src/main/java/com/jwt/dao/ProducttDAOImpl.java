@@ -50,4 +50,13 @@ public class ProducttDAOImpl implements ProductDao {
 
 		return (Product) sessionFactory.getCurrentSession().get(Product.class, productId);
 	}
+
+	@Override
+	public List<Product> filterProductsByPrice(float min, float max) {
+		Query q = sessionFactory.getCurrentSession().createQuery("from Product where price>:min and price<:max");
+		q.setParameter("min", min);
+		q.setParameter("max", max);
+		List<Product> allProducts = (List<Product>) q.list();
+		return allProducts;
+	}
 }
