@@ -25,7 +25,7 @@ public class Category {
 	@NotEmpty(message = "Must be not empty")
 	private String name;
 
-	@ManyToMany(mappedBy = "categories")
+	@ManyToMany(mappedBy = "categories", cascade = CascadeType.ALL)
 	private List<Product> products;
 
 	public int getId() {

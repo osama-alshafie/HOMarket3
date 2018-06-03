@@ -98,13 +98,17 @@
 						<h4 class="m-text14 p-b-7">Categories</h4>
 
 						<ul class="p-b-54">
-							<li class="p-t-4"><a href='<spring:url value="/product/productInventory" />' class="s-text13 active1">
+							<li class="p-t-4"><a href="#" class="s-text13 active1">
 									All </a></li>
-							
-							<c:forEach var="category" items="${categories}">
-							    <li class="p-t-4"><a href='<spring:url value="/category/${category.id}" />' class="s-text13"> ${category.name} </a></li>
-							</c:forEach>
-							
+
+							<li class="p-t-4"><a href="#" class="s-text13"> Women </a></li>
+
+							<li class="p-t-4"><a href="#" class="s-text13"> Men </a></li>
+
+							<li class="p-t-4"><a href="#" class="s-text13"> Kids </a></li>
+
+							<li class="p-t-4"><a href="#" class="s-text13">
+									Accesories </a></li>
 						</ul>
 
 						<!--  -->
@@ -219,7 +223,7 @@
 
 					<!-- Product -->
 					<div class="row">
-						<c:forEach var="product" items="${products}">
+						<c:forEach var="product" items="${category.products}">
 							<div class="col-sm-12 col-md-6 col-lg-4 p-b-50">
 								<!-- Block2 -->
 								<div

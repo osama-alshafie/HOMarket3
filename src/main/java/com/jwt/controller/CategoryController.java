@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.jwt.model.Category;
 import com.jwt.service.CategoryService;
 
 @Controller
@@ -18,8 +19,10 @@ public class CategoryController {
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public String getCategory(Model model, @PathVariable("id") int id) {
-		model.addAttribute("category", categoryService.getCategoryById(id)) ;
-		return "category";
+		Category category = categoryService.getCategoryById(id);
+		model.addAttribute("products", category.getProducts()) ;
+		model.addAttribute("categories", categoryService.getAllCategories());
+		return "product";
 	}
 	
 	@RequestMapping(value = "/all", method = RequestMethod.GET)

@@ -21,6 +21,7 @@ import com.jwt.model.Cart;
 import com.jwt.model.CartItem;
 import com.jwt.model.Customer;
 import com.jwt.model.Product;
+import com.jwt.service.CategoryService;
 import com.jwt.service.CustomerService;
 import com.jwt.service.ProductService;
 
@@ -36,10 +37,14 @@ public class ProductController {
 
 	@Autowired
 	private CartDao cartDao;
+	
+	@Autowired
+	private CategoryService categoryService;
 
 	@RequestMapping(value = "/productInventory", method = RequestMethod.GET)
 	public String Products(ModelAndView model, Model models) {
 
+		models.addAttribute("categories", categoryService.getAllCategories());
 		List<Product> allProducts = productService.getAllProducts();
 		if (allProducts != null) {
 			models.addAttribute("products", allProducts);
