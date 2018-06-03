@@ -16,6 +16,7 @@ public class Orders implements Serializable {
 	private int id;
 	private String address;
 	private Date date;
+	private float totalPrice;
 
 	public int getId() {
 		return id;
@@ -31,7 +32,7 @@ public class Orders implements Serializable {
 	@ManyToOne(/* cascade = CascadeType.ALL, */ fetch = FetchType.EAGER)
 	private Customer cust;
 
-	@OneToOne(mappedBy = "order", fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.LAZY)
 	private Cart cart;
 
 	@OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
@@ -69,4 +70,15 @@ public class Orders implements Serializable {
 		this.cust = cust;
 	}
 
+	public float getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(float totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
+	
+
+	
 }

@@ -144,7 +144,6 @@ public class AdminController {
 		productService.updateProduct(product);
 		MultipartFile productImage = product.getProductImage();
 		String rootDir = req.getSession().getServletContext().getRealPath("/");
-		// String filePath = req.getServletContext().getRealPath("/");
 		path = Paths.get(rootDir + "\\WEB-INF\\resources\\img\\" + product.getId() + ".png");
 		String destinatino = path.toString();
 		if (productImage != null && !productImage.isEmpty()) {

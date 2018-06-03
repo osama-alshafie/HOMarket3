@@ -78,60 +78,88 @@
 
 	<section class="cart bgwhite p-t-70 p-b-100">
 		<div class="container">
-			Order history
-			<div class="container-table-cart pos-relative">
-				<div class="wrap-table-shopping-cart bgwhite">
-					<table class="table-shopping-cart">
-						<tr class="table-head">
-							<!-- 							<th class="column-1"></th> -->
-							<th class="column-2">No. of Order</th>
-							<!-- 							<th class="column-3">Customer Name</th> -->
-							<!-- 							<th class="column-4 p-l-70">Description</th> -->
-							<th class="column-6">Address</th>
-							<th class="column-5">Date</th>
-							<th class="column-7">Total</th>
-						</tr>
-						<c:forEach items="${orders}" var="order">
-							<tr class="table-row">
+			<table class="table-shopping-cart">
+				<tr class="table-head">
+					<%-- 			<c:forEach items="${orders}" var="order"> --%>
+					<c:forEach items="${orders.cart.cartItemList}" var="cartItem">
 
-								<td class="column-6">${order.id}</td>
-								<td class="column-6">${order.address}</td>
-								<td class="column-6">${order.date}</td>
-								<td class="column-6">${order.totalPrice}</td>
-								<td class="column-6"><div>
-										<a href='<spring:url value="/orderDetails/${order.id}" />'>Details</a>
-									</div></td>
-							</tr>
-							<!-- 							<tr> -->
-							<%-- 								<c:forEach items="${order.cart.cartItemList}" var="cartItem"> --%>
-							<%-- 									<td class="column-7">${cartItem.product.price* cartItem.quantity}</td> --%>
-							<%-- 								</c:forEach> --%>
-							<!-- 							</tr> -->
-						</c:forEach>
-					</table>
-				</div>
-			</div>
-			<div class="size12 trans-0-4 m-t-10 m-b-10 m-r-10">
-				<a class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4"
-					href='<spring:url value="/product" />'> ADD More Product </a> <br />
-			</div>
-			<spring:url value="/cart" var="url" />
-			<form class="form-horizontal" action="${url}" method="POST">
+						<td class="column-7">${cartItem.product.price * cartItem.quantity}</td>
+						<td class="column-7">${cartItem.quantity}</td>
+						<td class="column-7">${cartItem.quantity}</td>
+						<td class="column-7">${cartItem.quantity}</td>
+						<td class="column-7">${cartItem.quantity}</td>
+						<td class="column-7">${cartItem.quantity}</td>
+						<td class="column-7">${cartItem.quantity}</td>
+						<td class="column-7">${cartItem.quantity}</td>
+						<td class="column-7">${cartItem.quantity}</td>
+						<td class="column-7">${cartItem.quantity}</td>
+						<td class="column-7">${cartItem.quantity}</td>
+						<td class="column-7">${cartItem.quantity}</td>
+						<td class="column-7">${cartItem.quantity}</td>
+						<td class="column-7">${cartItem.quantity}</td>
+						<td class="column-7">${cartItem.quantity}</td>
+						<td class="column-7">${cartItem.quantity}</td>
+						<td class="column-7">${cartItem.quantity}</td>
+						<td class="column-7">${cartItem.quantity}</td>
+						<td class="column-7">${cartItem.quantity}</td>
+						<td class="column-7">${cartItem.quantity}</td>
+						<td class="column-7">${cartItem.quantity}</td>
+						<td class="column-7">${cartItem.quantity}</td>
+						<td class="column-7">${cartItem.quantity}</td>
+						<td class="column-7">${cartItem.quantity}</td>
+						<td class="column-7">${cartItem.quantity}</td>
+						<td class="column-7">${cartItem.quantity}</td>
+						<td class="column-7">${cartItem.quantity}</td>
+						<td class="column-7">${cartItem.quantity}</td>
+						<td class="column-7">${cartItem.quantity}</td>
+						<td class="column-7">${cartItem.quantity}</td>
+						<td class="column-7">${cartItem.quantity}</td>
+						<td class="column-7">${cartItem.quantity}</td>
+						<td class="column-7">${cartItem.quantity}</td>
+						<td class="column-7">${cartItem.product.id}</td>
+						<td class="column-7">${cartItem.product.id}</td>
+						<td class="column-7">${cartItem.product.id}</td>
+						<td class="column-7">${cartItem.product.id}</td>
+						<td class="column-7">${cartItem.product.id}</td>
+						<td class="column-7">${cartItem.product.id}</td>
+						<td class="column-7">${cartItem.product.id}</td>
+						<td class="column-7">${cartItem.product.id}</td>
+						<td class="column-7">${cartItem.product.id}</td>
+						<td class="column-7">${cartItem.product.id}</td>
+						<td class="column-7">${cartItem.product.id}</td>
+						<td class="column-7">${cartItem.product.id}</td>
+						<td class="column-7">${cartItem.product.id}</td>
+						<td class="column-7">${cartItem.product.id}</td>
+						<td class="column-7">${cartItem.product.id}</td>
+						<td class="column-7">${cartItem.product.id}</td>
+						<td class="column-7">${cartItem.product.id}</td>
+						<td class="column-7">${cartItem.product.id}</td>
+						<td class="column-7">${cartItem.product.id}</td>
+						<td class="column-7">${cartItem.product.id}</td>
+						<td class="column-7">${cartItem.name}</td>
+						<td class="column-7">${cartItem.name}</td>
+						<td class="column-7">${cartItem.name}</td>
+						<td class="column-7">${cartItem.name}</td>
+						<td class="column-7">${cartItem.name}</td>
+						<td class="column-7">${cartItem.name}</td>
+						<td class="column-7">${cartItem.name}</td>
+						<td class="column-7">${cartItem.name}</td>
+						<td class="column-7">${cartItem.name}</td>
+						<td class="column-7">${cartItem.name}</td>
+						<td class="column-7">${cartItem.name}</td>
+						<td class="column-7">${cartItem.name}</td>
+						<td class="column-7">${cartItem.name}</td>
+						<td class="column-7">${cartItem.name}</td>
+						<td class="column-7">${cartItem.name}</td>
 
-				<div class="size11 bo4 m-r-10">
-					<input class="sizefull s-text7 p-l-22 p-r-22" type="text"
-						name="address" placeholder="Add address here">
-				</div>
-				<!-- 				<button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4" type="submit">Go to Cart</button> -->
-				<div class="size12 trans-0-4 m-t-10 m-b-10 m-r-10">
-					<button
-						class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
-						Check Out</button>
-				</div>
-			</form>
+					</c:forEach>
+				</tr>
+			</table>
 		</div>
 	</section>
 
-	<jsp:include page="footer.jsp" />
 </body>
+
+
+<jsp:include page="footer.jsp" />
 </html>

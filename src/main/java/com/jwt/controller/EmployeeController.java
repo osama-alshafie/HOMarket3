@@ -109,22 +109,20 @@ public class EmployeeController {
 		return "product";
 	}
 
+	@RequestMapping(value = "/orderDetails/{id}", method = RequestMethod.GET)
+	public String OrderHistoryDetails(Model models, @ModelAttribute("orderss") final Orders orderss,
+			@PathVariable("id") int id) {
+
+		Orders orders = orderService.getOrderById(id);
+		models.addAttribute("orders", orders);
+		return "orderDetails";
+	}
+
 	@RequestMapping(value = "/orderHistory", method = RequestMethod.GET)
 	public String OrderHistory(Model models, @ModelAttribute("orderss") final Orders orderss) {
 
 		List<Orders> orders = orderService.getOrderByCustomer();
-
-		Cart carts = cartService.getCartByCustomer();
-		List<CartItem> cartItems = carts.getCartItemList();
-		float sum = 0;
-
-		for (CartItem cartItem : cartItems) {
-			sum = sum + (cartItem.getProduct().getPrice() * cartItem.getQuantity());
-		}
 		models.addAttribute("orders", orders);
-		models.addAttribute("cartItemss", cartItems);
-		models.addAttribute("sum", sum);
-
 		return "orderHistory";
 	}
 
@@ -168,10 +166,18 @@ public class EmployeeController {
 		Customer customUser = customerService.getCustomerByName(user.getUsername());
 		Cart carts = customUser.getCart();
 
+		List<CartItem> cartItems = carts.getCartItemList();
+		float sum = 0;
+		for (CartItem cartItem : cartItems) {
+			sum = sum + (cartItem.getProduct().getPrice() * cartItem.getQuantity());
+		}
+
 		Orders order = new Orders();
 		order.setAddress(address);
 		order.setCart(carts);
 		order.setCust(customUser);
+		order.setTotalPrice(sum);
+
 		orderService.CreateOrder(order);
 		redirectAttributes.addFlashAttribute("orderss", order);
 		return "redirect:/order";

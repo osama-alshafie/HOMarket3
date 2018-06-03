@@ -25,7 +25,7 @@ public class Cart implements Serializable {
 	@OneToMany(mappedBy = "cart", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<CartItem> cartItemList;
 
-	@OneToOne(fetch = FetchType.EAGER /* , cascade = CascadeType.ALL */)
+	@OneToOne(fetch = FetchType.EAGER , cascade = CascadeType.ALL)
 	private Orders order;
 
 	@OneToOne(mappedBy = "cart", fetch = FetchType.EAGER /*
