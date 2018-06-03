@@ -14,7 +14,11 @@ public interface ProductDao {
 
     public List<Product> getAllProducts();
     
+    public List<Product> filterProductsByName(String name);
+    
     public List<Product> filterProductsByPrice(float min, float max);
+    
+    public List<Product> filterProducts(String name, float min, float max);
 
     public Product getProductById(int productId);
     

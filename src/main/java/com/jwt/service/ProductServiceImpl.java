@@ -50,4 +50,14 @@ public class ProductServiceImpl implements ProductService {
 	public List<Product> filterProductsByPrice(float min, float max) {
 		return productDao.filterProductsByPrice(min, max);
 	}
+
+	@Override
+	public List<Product> filterProductsByName(String name) {
+		return productDao.filterProductsByName(name);
+	}
+
+	@Override
+	public List<Product> filterProducts(String name, float min, float max) {
+		return productDao.filterProducts(name, min, max);
+	}
 }

@@ -59,4 +59,22 @@ public class ProducttDAOImpl implements ProductDao {
 		List<Product> allProducts = (List<Product>) q.list();
 		return allProducts;
 	}
+
+	@Override
+	public List<Product> filterProductsByName(String name) {
+		Query q = sessionFactory.getCurrentSession().createQuery("from Product where name LIKE '%:n%'");
+		q.setParameter("n", name);
+		List<Product> allProducts = (List<Product>) q.list();
+		return allProducts;
+	}
+
+	@Override
+	public List<Product> filterProducts(String name, float min, float max) {
+		Query q = sessionFactory.getCurrentSession().createQuery("from Product where price>:min and price<:max and name LIKE '%:n%'");
+		q.setParameter("min", min);
+		q.setParameter("max", max);
+		q.setParameter("n", name);
+		List<Product> allProducts = (List<Product>) q.list();
+		return allProducts;
+	}
 }
