@@ -38,7 +38,7 @@ public class ProductController {
 	@Autowired
 	private CategoryService categoryService;
 
-	@RequestMapping(value = "/productInventory", method = RequestMethod.GET)
+	@RequestMapping(value = "/all", method = RequestMethod.GET)
 	public String Products(ModelAndView model, Model models) {
 
 		models.addAttribute("categories", categoryService.getAllCategories());

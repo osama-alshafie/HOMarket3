@@ -98,7 +98,7 @@
 						<h4 class="m-text14 p-b-7">Categories</h4>
 
 						<ul class="p-b-54">
-							<li class="p-t-4"><a href='<spring:url value="/product/productInventory" />' class="s-text13 active1">
+							<li class="p-t-4"><a href='<spring:url value="/product/all" />' class="s-text13 active1">
 									All </a></li>
 							
 							<c:forEach var="category" items="${categories}">
@@ -118,17 +118,21 @@
 							</div>
 
 							<div class="flex-sb-m flex-w p-t-16">
-								<div class="w-size11">
-									<!-- Button -->
-									<button
-										class="flex-c-m size4 bg7 bo-rad-15 hov1 s-text14 trans-0-4">
-										Filter</button>
-								</div>
-
-								<div class="s-text3 p-t-10 p-b-10">
-									Range: $<span id="value-lower">610</span> - $<span
-										id="value-upper">980</span>
-								</div>
+							    <div>
+							        <div class="m-text15 p-b-17">Min Price</div>
+							        <input type="number" class="min" name="min" />
+							        
+							        <div class="m-text15 p-b-17">Max Price</div>
+							        <input type="number" class="max" name="max" />
+							        
+							        <div class="w-size11">
+										<!-- Button -->
+										<button
+											class="flex-c-m size4 bg7 bo-rad-15 hov1 s-text14 trans-0-4">
+											Filter</button>
+									</div>
+							    </div>
+								
 							</div>
 						</div>
 

@@ -77,7 +77,7 @@
                 </li>
 
                 <li>
-                    <a href='<spring:url value="/product/productInventory"/>'>Products</a>
+                    <a href='<spring:url value="/product/all"/>'>Products</a>
                 </li>
                 
                 <li>
@@ -136,7 +136,7 @@
                         </li>
 
                         <li>
-                            <a href='<spring:url value="/product/productInventory"/>'>Products</a>
+                            <a href='<spring:url value="/product/all"/>'>Products</a>
                         </li>
                         
                         <li>
