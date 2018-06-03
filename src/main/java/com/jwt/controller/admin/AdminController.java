@@ -41,7 +41,7 @@ public class AdminController {
 
 	@Autowired
 	private CustomerService customerService;
-	
+
 	@Autowired
 	private AdminService adminService;
 
@@ -93,10 +93,10 @@ public class AdminController {
 		if (br.hasErrors()) {
 			return "newProduct";
 		}
-		
+
 		// service here
 		adminService.updateProduct(product.getSelectedCheckBox(), product);
-		
+
 		// image configuration
 		// image configuration
 		// image configuration
@@ -107,6 +107,7 @@ public class AdminController {
 		String destinatino = path.toString();
 		if (productImage != null && !productImage.isEmpty()) {
 			try {
+				System.out.println("Path is  : " + destinatino);
 				productImage.transferTo(new File(destinatino));
 				System.out.println("Name is :" + productImage.getName());
 			} catch (Exception e) {
@@ -136,11 +137,25 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "/product/edit", method = RequestMethod.POST)
-	public String editProduct(@Valid @ModelAttribute Product product, BindingResult br) {
+	public String editProduct(@Valid @ModelAttribute Product product, BindingResult br, HttpServletRequest req) {
 		if (br.hasErrors()) {
 			return "newProduct";
 		}
 		productService.updateProduct(product);
+		MultipartFile productImage = product.getProductImage();
+		String rootDir = req.getSession().getServletContext().getRealPath("/");
+		// String filePath = req.getServletContext().getRealPath("/");
+		path = Paths.get(rootDir + "\\WEB-INF\\resources\\img\\" + product.getId() + ".png");
+		String destinatino = path.toString();
+		if (productImage != null && !productImage.isEmpty()) {
+			try {
+				System.out.println("Path is  : " + destinatino);
+				productImage.transferTo(new File(destinatino));
+				System.out.println("Name is :" + productImage.getName());
+			} catch (Exception e) {
+				throw new RuntimeException("saving file is failed", e);
+			}
+		}
 		return "redirect:/admin/productInventory";
 	}
 

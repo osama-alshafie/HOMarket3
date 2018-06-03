@@ -27,7 +27,6 @@ public class CartItem {
 		this.quantity = quantity;
 	}
 
-	
 	public boolean isDeleted() {
 		return deleted;
 	}
@@ -35,7 +34,6 @@ public class CartItem {
 	public void setDeleted(boolean deleted) {
 		this.deleted = deleted;
 	}
-
 
 	// =============================================================================\\
 	/* Mapping */
@@ -45,6 +43,9 @@ public class CartItem {
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Cart cart;
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	private Orders order;
 
 	public Product getProduct() {
 		return product;

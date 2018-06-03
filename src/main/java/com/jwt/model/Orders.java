@@ -3,6 +3,7 @@ package com.jwt.model;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Orders implements Serializable {
@@ -32,6 +33,9 @@ public class Orders implements Serializable {
 
 	@OneToOne(mappedBy = "order", fetch = FetchType.LAZY)
 	private Cart cart;
+
+	@OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
+	private List<CartItem> cartItem;
 
 	public Cart getCart() {
 		return cart;
