@@ -76,6 +76,16 @@ public class ProductController {
 		return "redirect:/cart";
 	}
 	
+	@RequestMapping(value = "/ajax/search", method = RequestMethod.GET)
+	public ModelAndView searchProducts(ModelAndView model, @RequestParam("minPrice") float minPrice, 
+			@RequestParam("maxPrice") float maxPrice, @RequestParam("query") String query) {
+		
+		model.addObject("products", productService.filterProducts(query, minPrice, maxPrice));
+		model.setViewName("products_list");
+		
+		return model;
+	}
+	
 	@RequestMapping(value = "/ajax/filter", method = RequestMethod.GET)
 	public ModelAndView filterProduct(ModelAndView model, @RequestParam("minPrice") float minPrice, 
 			@RequestParam("maxPrice") float maxPrice) {

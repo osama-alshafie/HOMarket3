@@ -136,40 +136,6 @@
 							</div>
 						</div>
 						
-						<div class="filter-price p-t-22 p-b-50 bo3">
-							<div class="m-text15 p-b-17">Name</div>
-
-							<div class="wra-filter-bar">
-								<div id="filter-bar"></div>
-							</div>
-
-							<div class="flex-sb-m flex-w p-t-16">
-							    <div>
-							    
-							        <div class="m-text15 p-b-17">Name</div>
-							        <input type="text" class="name" name="name" />
-							        
-							        <div class="w-size11">
-										<!-- Button -->
-										<button
-											class="flex-c-m size4 bg7 bo-rad-15 hov1 s-text14 trans-0-4 btn_name_filter">
-											Filter</button>
-									</div>
-							    </div>
-								
-							</div>
-						</div>
-
-						
-
-						<div class="search-product pos-relative bo4 of-hidden">
-							<input class="s-text7 size6 p-l-23 p-r-50" type="text"
-								name="search-product" placeholder="Search Products...">
-
-							<button class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4">
-								<i class="fs-12 fa fa-search" aria-hidden="true"></i>
-							</button>
-						</div>
 					</div>
 				</div>
 
@@ -177,32 +143,17 @@
 					<!--  -->
 					<div class="flex-sb-m flex-w p-b-35">
 						<div class="flex-w">
-							<div
-								class="rs2-select2 bo4 of-hidden w-size12 m-t-5 m-b-5 m-r-10">
-								<select class="selection-2" name="sorting">
-									<option>Default Sorting</option>
-									<option>Popularity</option>
-									<option>Price: low to high</option>
-									<option>Price: high to low</option>
-								</select>
-							</div>
-
-							<div
-								class="rs2-select2 bo4 of-hidden w-size12 m-t-5 m-b-5 m-r-10">
-								<select class="selection-2" name="sorting">
-									<option>Price</option>
-									<option>$0.00 - $50.00</option>
-									<option>$50.00 - $100.00</option>
-									<option>$100.00 - $150.00</option>
-									<option>$150.00 - $200.00</option>
-									<option>$200.00+</option>
-
-								</select>
+							<!-- search -->
+							<div class="search-product pos-relative bo4 of-hidden">
+								<input class="search_product s-text7 size6 p-l-23 p-r-50" type="text"
+									name="search-product" placeholder="Search Products...">
+	
+								<button class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4 btn_search">
+									<i class="fs-12 fa fa-search" aria-hidden="true"></i>
+								</button>
 							</div>
 						</div>
-
-						<span class="s-text8 p-t-5 p-b-5"> Showing 1–12 of 16
-							results </span>
+						
 					</div>
 					<spring:url value="/resources/images/11.jpg" var="imageOfC"></spring:url>
 
@@ -216,12 +167,6 @@
 									<img src="${imageOfC}" alt="IMG-PRODUCT"> ${product.name}
 
 									<div class="block2-overlay trans-0-4">
-										<a href="#"
-											class="block2-btn-addwishlist hov-pointer trans-0-4"> <i
-											class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
-											<i class="icon-wishlist icon_heart dis-none"
-											aria-hidden="true"></i>
-										</a>
 
 										<div class="block2-btn-addcart w-size1 trans-0-4">
 											<!-- Button -->
@@ -273,12 +218,14 @@
 	
 	<script type="text/javascript">
 		$(document).ready(function () {
+			var minPrice = 0;
+	    	var maxPrice = 1000000000;
 			// filter by price
 		    $('.btn_price_filter').on('click', function(){
 		    	console.log('entered');
 		    	
-		    	var minPrice = $('.min').val();
-		    	var maxPrice = $('.max').val();
+		    	minPrice = $('.min').val();
+		    	maxPrice = $('.max').val();
 		    	
 		    	console.log(minPrice);
 		    	console.log(maxPrice);
@@ -309,6 +256,30 @@
 		    		url: '<spring:url value="/product/ajax/filterByName" />',
 		            data: {
 		                'name': name
+		            },
+		            success: function (data) {
+		            	$('.products_aj').html(data);
+		            }
+		            
+		    	});
+		    });
+		    
+		 // search
+		    $('.btn_search').on('click', function(){
+		    	console.log('entered');
+		    	
+		    	var query = $('.search_product').val();
+		    	
+		    	console.log(minPrice);
+		    	console.log(maxPrice);
+		    	console.log(query);
+		    	
+		    	$.ajax({
+		    		url: '<spring:url value="/product/ajax/search" />',
+		            data: {
+		                'minPrice': minPrice,
+		                'maxPrice': maxPrice,
+		                'query': query
 		            },
 		            success: function (data) {
 		            	$('.products_aj').html(data);
