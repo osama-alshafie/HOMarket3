@@ -112,8 +112,8 @@ public class EmployeeController {
 	@RequestMapping(value = "/orderDetails/{id}", method = RequestMethod.GET)
 	public String OrderHistoryDetails(Model models, @ModelAttribute("orderss") final Orders orderss,
 			@PathVariable("id") int id) {
-
 		Orders orders = orderService.getOrderById(id);
+
 		models.addAttribute("orders", orders);
 		return "orderDetails";
 	}

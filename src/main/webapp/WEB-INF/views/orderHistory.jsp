@@ -102,33 +102,15 @@
 										<a href='<spring:url value="/orderDetails/${order.id}" />'>Details</a>
 									</div></td>
 							</tr>
-							<!-- 							<tr> -->
-							<%-- 								<c:forEach items="${order.cart.cartItemList}" var="cartItem"> --%>
-							<%-- 									<td class="column-7">${cartItem.product.price* cartItem.quantity}</td> --%>
-							<%-- 								</c:forEach> --%>
-							<!-- 							</tr> -->
 						</c:forEach>
 					</table>
 				</div>
 			</div>
 			<div class="size12 trans-0-4 m-t-10 m-b-10 m-r-10">
 				<a class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4"
-					href='<spring:url value="/product" />'> ADD More Product </a> <br />
+					href='<spring:url value="/product" />'> Go Shopping </a> <br />
 			</div>
-			<spring:url value="/cart" var="url" />
-			<form class="form-horizontal" action="${url}" method="POST">
 
-				<div class="size11 bo4 m-r-10">
-					<input class="sizefull s-text7 p-l-22 p-r-22" type="text"
-						name="address" placeholder="Add address here">
-				</div>
-				<!-- 				<button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4" type="submit">Go to Cart</button> -->
-				<div class="size12 trans-0-4 m-t-10 m-b-10 m-r-10">
-					<button
-						class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
-						Check Out</button>
-				</div>
-			</form>
 		</div>
 	</section>
 

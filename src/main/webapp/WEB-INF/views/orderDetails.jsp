@@ -72,94 +72,40 @@
 
 
 </head>
-<body class="animsition">
 
-	<jsp:include page="header.jsp" />
+<jsp:include page="header.jsp" />
 
+
+<body>
+
+	<!-- </section> -->
 	<section class="cart bgwhite p-t-70 p-b-100">
 		<div class="container">
-			<table class="table-shopping-cart">
-				<tr class="table-head">
-					<%-- 			<c:forEach items="${orders}" var="order"> --%>
-					<c:forEach items="${orders.cart.cartItemList}" var="cartItem">
-
-						<td class="column-7">${cartItem.product.price * cartItem.quantity}</td>
-						<td class="column-7">${cartItem.quantity}</td>
-						<td class="column-7">${cartItem.quantity}</td>
-						<td class="column-7">${cartItem.quantity}</td>
-						<td class="column-7">${cartItem.quantity}</td>
-						<td class="column-7">${cartItem.quantity}</td>
-						<td class="column-7">${cartItem.quantity}</td>
-						<td class="column-7">${cartItem.quantity}</td>
-						<td class="column-7">${cartItem.quantity}</td>
-						<td class="column-7">${cartItem.quantity}</td>
-						<td class="column-7">${cartItem.quantity}</td>
-						<td class="column-7">${cartItem.quantity}</td>
-						<td class="column-7">${cartItem.quantity}</td>
-						<td class="column-7">${cartItem.quantity}</td>
-						<td class="column-7">${cartItem.quantity}</td>
-						<td class="column-7">${cartItem.quantity}</td>
-						<td class="column-7">${cartItem.quantity}</td>
-						<td class="column-7">${cartItem.quantity}</td>
-						<td class="column-7">${cartItem.quantity}</td>
-						<td class="column-7">${cartItem.quantity}</td>
-						<td class="column-7">${cartItem.quantity}</td>
-						<td class="column-7">${cartItem.quantity}</td>
-						<td class="column-7">${cartItem.quantity}</td>
-						<td class="column-7">${cartItem.quantity}</td>
-						<td class="column-7">${cartItem.quantity}</td>
-						<td class="column-7">${cartItem.quantity}</td>
-						<td class="column-7">${cartItem.quantity}</td>
-						<td class="column-7">${cartItem.quantity}</td>
-						<td class="column-7">${cartItem.quantity}</td>
-						<td class="column-7">${cartItem.quantity}</td>
-						<td class="column-7">${cartItem.quantity}</td>
-						<td class="column-7">${cartItem.quantity}</td>
-						<td class="column-7">${cartItem.quantity}</td>
-						<td class="column-7">${cartItem.product.id}</td>
-						<td class="column-7">${cartItem.product.id}</td>
-						<td class="column-7">${cartItem.product.id}</td>
-						<td class="column-7">${cartItem.product.id}</td>
-						<td class="column-7">${cartItem.product.id}</td>
-						<td class="column-7">${cartItem.product.id}</td>
-						<td class="column-7">${cartItem.product.id}</td>
-						<td class="column-7">${cartItem.product.id}</td>
-						<td class="column-7">${cartItem.product.id}</td>
-						<td class="column-7">${cartItem.product.id}</td>
-						<td class="column-7">${cartItem.product.id}</td>
-						<td class="column-7">${cartItem.product.id}</td>
-						<td class="column-7">${cartItem.product.id}</td>
-						<td class="column-7">${cartItem.product.id}</td>
-						<td class="column-7">${cartItem.product.id}</td>
-						<td class="column-7">${cartItem.product.id}</td>
-						<td class="column-7">${cartItem.product.id}</td>
-						<td class="column-7">${cartItem.product.id}</td>
-						<td class="column-7">${cartItem.product.id}</td>
-						<td class="column-7">${cartItem.product.id}</td>
-						<td class="column-7">${cartItem.name}</td>
-						<td class="column-7">${cartItem.name}</td>
-						<td class="column-7">${cartItem.name}</td>
-						<td class="column-7">${cartItem.name}</td>
-						<td class="column-7">${cartItem.name}</td>
-						<td class="column-7">${cartItem.name}</td>
-						<td class="column-7">${cartItem.name}</td>
-						<td class="column-7">${cartItem.name}</td>
-						<td class="column-7">${cartItem.name}</td>
-						<td class="column-7">${cartItem.name}</td>
-						<td class="column-7">${cartItem.name}</td>
-						<td class="column-7">${cartItem.name}</td>
-						<td class="column-7">${cartItem.name}</td>
-						<td class="column-7">${cartItem.name}</td>
-						<td class="column-7">${cartItem.name}</td>
-
-					</c:forEach>
-				</tr>
-			</table>
+			Order history
+			<div class="container-table-cart pos-relative">
+				<div class="wrap-table-shopping-cart bgwhite">
+					<table class="table-shopping-cart">
+						<tr class="table-head">
+							<th class="column-2">ID</th>
+							<th class="column-6">quantity</th>
+							<th class="column-5">Name</th>
+							<th class="column-7">Total</th>
+						</tr>
+						<c:forEach items="${orders.cart.cartItemList}" var="cartItem">
+							<tr class="table-row">
+								<td class="column-7">${cartItem.id}</td>
+								<td class="column-7">${cartItem.quantity}</td>
+								<td class="column-7">${cartItem.product.name}</td>
+								<td class="column-7">${cartItem.product.price * cartItem.quantity}</td>
+							</tr>
+						</c:forEach>
+					</table>
+				</div>
+			</div>
 		</div>
 	</section>
 
-</body>
 
-
-<jsp:include page="footer.jsp" />
+	<jsp:include page="footer.jsp" />
 </html>
+
