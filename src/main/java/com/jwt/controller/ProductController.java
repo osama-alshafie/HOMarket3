@@ -85,5 +85,14 @@ public class ProductController {
 		
 		return model;
 	}
+	
+	@RequestMapping(value = "/ajax/filterByName", method = RequestMethod.GET)
+	public ModelAndView filterByName(ModelAndView model, @RequestParam("name") String name) {
+		
+		model.addObject("products", productService.filterProductsByName(name));
+		model.setViewName("products_list");
+		
+		return model;
+	}
 
 }
