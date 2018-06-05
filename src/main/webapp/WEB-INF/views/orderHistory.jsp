@@ -99,7 +99,7 @@
 								<td class="column-6">${order.date}</td>
 								<td class="column-6">${order.totalPrice}</td>
 								<td class="column-6"><div>
-										<a href='<spring:url value="/orderDetails/${order.id}" />'>Details</a>
+										<a href='<spring:url value="/customer/order/details/${order.id}" />'>Details</a>
 									</div></td>
 							</tr>
 						</c:forEach>
@@ -108,7 +108,7 @@
 			</div>
 			<div class="size12 trans-0-4 m-t-10 m-b-10 m-r-10">
 				<a class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4"
-					href='<spring:url value="/product" />'> Go Shopping </a> <br />
+					href='<spring:url value="/product/all" />'> Go Shopping </a> <br />
 			</div>
 
 		</div>

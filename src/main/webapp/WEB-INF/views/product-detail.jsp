@@ -130,8 +130,9 @@
 						<!-- 						<div class="w-size16 flex-m flex-w"></div> -->
 					</div>
 				</div>
-				<spring:url value="/product-detail/${product.id}" var="url" />
+				<spring:url value="/customer/cartItem" var="url" />
 				<form class="form-horizontal" action="${url}" method="POST">
+				    <input type="hidden" name="productId" value="${product.id}" class="form-control">
 
 					<button class="btn-num-product-down color1 flex-c-m size7 bg8 eff2">
 						<i class="fs-12 fa fa-minus" aria-hidden="true"></i>
@@ -139,6 +140,7 @@
 
 					<input type="number" name="counter" value="1" max="${maxqtn}"
 						class="form-control">
+						
 
 					<button class="btn-num-product-up color1 flex-c-m size7 bg8 eff2">
 						<i class="fs-12 fa fa-plus" aria-hidden="true"></i>

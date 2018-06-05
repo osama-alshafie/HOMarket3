@@ -73,7 +73,7 @@ public class CartController {
 
 		orderService.CreateOrder(order);
 		redirectAttributes.addFlashAttribute("orderss", order);
-		return "redirect:/order";
+		return "redirect:/customer/order";
 	}
 	
 }

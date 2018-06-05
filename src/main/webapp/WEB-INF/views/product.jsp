@@ -190,13 +190,13 @@
 								</div>
 
 								<div class="block2-txt p-t-20">
-									<a href="product-detail.jsp"
+									<a href='<spring:url value="/product/details/${product.id}" />'
 										class="block2-name dis-block s-text3 p-b-5">
 										${product.description} </a> <span
 										class="block2-price m-text6 p-r-5"> ${product.price} </span>
 								</div>
 
-								<a href='<spring:url value="/product-detail/${product.id}" />'>
+								<a href='<spring:url value="/product/details/${product.id}" />'>
 									ADD To Cart </a>
 								<sec:authorize access="hasRole('ROLE_ADMIN')">
 

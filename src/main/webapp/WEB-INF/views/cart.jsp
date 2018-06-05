@@ -125,9 +125,9 @@
 			</div>
 			<div class="size12 trans-0-4 m-t-10 m-b-10 m-r-10">
 				<a class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4"
-					href='<spring:url value="/product" />'> ADD More Product </a> <br />
+					href='<spring:url value="/product/all" />'> ADD More Product </a> <br />
 			</div>
-			<spring:url value="/cart" var="url" />
+			<spring:url value="/customer/cart/checkout" var="url" />
 			<form class="form-horizontal" action="${url}" method="POST">
 
 				<div class="size11 bo4 m-r-10">

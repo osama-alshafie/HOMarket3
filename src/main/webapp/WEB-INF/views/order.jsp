@@ -137,7 +137,7 @@
 
 	<div class="size12 trans-0-4 m-t-10 m-b-10 m-r-10">
 		<a class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4"
-			href='<spring:url value="/product" />'>Go Shopping </a> <br />
+			href='<spring:url value="/product/all" />'>Go Shopping </a> <br />
 	</div>
 
 	<jsp:include page="footer.jsp" />

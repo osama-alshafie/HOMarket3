@@ -15,15 +15,15 @@ import com.jwt.service.CartService;
 @Controller
 @RequestMapping(value = "/customer/cartItem")
 public class CartItemController {
-	
+
 	@Autowired
 	private CartService cartService;
-	
-	@RequestMapping(value = "/{id}", method = RequestMethod.POST)
-	public String ProductDetailsPost(@PathVariable("id") int id, Model model, @RequestParam("counter") int counter,
-			HttpServletRequest request) {
 
-		cartService.EditCart(counter, id);
+	@RequestMapping(method = RequestMethod.POST)
+	public String ProductDetailsPost(Model model, @RequestParam("counter") int counter,
+			@RequestParam("productId") String id, HttpServletRequest request) {
+
+		cartService.EditCart(counter, Integer.parseInt(id));
 		return "redirect:/customer/cart";
 	}
 
