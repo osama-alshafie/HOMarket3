@@ -182,8 +182,8 @@
 
 										<div class="block2-btn-addcart w-size1 trans-0-4">
 											<!-- Button -->
-											<button
-												class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
+											<button id="btnAdd" value="${product.id}"
+												class="btnAdd flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
 												Add to Cart</button>
 										</div>
 									</div>
@@ -300,11 +300,14 @@
 				});
 			});
 
-			$('#btnAdd').on('click', function(id) {
+			$('.btnAdd').on('click', function() {
+				console.log('entered');
+				var product_id = $(this).val();
+				console.log(product_id);
 				$.ajax({
-					url : '<spring:url value="/addCartItem" />',
+					url : '<spring:url value="/customer/cartItem/ajax/add" />',
 					data : {
-						'id' : id
+						'id' : product_id
 					},
 					success : function(data) {
 						$('.products_aj').html(data);

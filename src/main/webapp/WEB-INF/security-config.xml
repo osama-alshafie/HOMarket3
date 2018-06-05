@@ -25,7 +25,7 @@
 	</beans:bean>
 	<http use-expressions="true">
 		<intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
-		<intercept-url pattern="/Customer/**" access="hasRole('ROLE_USER')" />
+		<intercept-url pattern="/customer/**" access="hasRole('ROLE_USER')" />
 		<form-login />
 		<logout />
 	</http>
