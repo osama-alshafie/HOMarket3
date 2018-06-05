@@ -98,13 +98,16 @@
 						<h4 class="m-text14 p-b-7">Categories</h4>
 
 						<ul class="p-b-54">
-							<li class="p-t-4"><a href='<spring:url value="/product/all" />' class="s-text13 active1">
-									All </a></li>
-							
+							<li class="p-t-4"><a
+								href='<spring:url value="/product/all" />'
+								class="s-text13 active1"> All </a></li>
+
 							<c:forEach var="category" items="${categories}">
-							    <li class="p-t-4"><a href='<spring:url value="/category/${category.id}" />' class="s-text13"> ${category.name} </a></li>
+								<li class="p-t-4"><a
+									href='<spring:url value="/category/${category.id}" />'
+									class="s-text13"> ${category.name} </a></li>
 							</c:forEach>
-							
+
 						</ul>
 
 						<!--  -->
@@ -118,24 +121,24 @@
 							</div>
 
 							<div class="flex-sb-m flex-w p-t-16">
-							    <div>
-							        <div class="m-text15 p-b-17">Min Price</div>
-							        <input type="number" class="min" name="min" />
-							        
-							        <div class="m-text15 p-b-17">Max Price</div>
-							        <input type="number" class="max" name="max" />
-							        
-							        <div class="w-size11">
+								<div>
+									<div class="m-text15 p-b-17">Min Price</div>
+									<input type="number" class="min" name="min" />
+
+									<div class="m-text15 p-b-17">Max Price</div>
+									<input type="number" class="max" name="max" />
+
+									<div class="w-size11">
 										<!-- Button -->
 										<button
 											class="flex-c-m size4 bg7 bo-rad-15 hov1 s-text14 trans-0-4 btn_price_filter">
 											Filter</button>
 									</div>
-							    </div>
-								
+								</div>
+
 							</div>
 						</div>
-						
+
 					</div>
 				</div>
 
@@ -145,21 +148,24 @@
 						<div class="flex-w">
 							<!-- search -->
 							<div class="search-product pos-relative bo4 of-hidden">
-								<input class="search_product s-text7 size6 p-l-23 p-r-50" type="text"
-									name="search-product" placeholder="Search Products...">
-	
-								<button class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4 btn_search">
+								<input class="search_product s-text7 size6 p-l-23 p-r-50"
+									type="text" name="search-product"
+									placeholder="Search Products...">
+
+								<button
+									class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4 btn_search">
 									<i class="fs-12 fa fa-search" aria-hidden="true"></i>
 								</button>
 							</div>
 						</div>
-						
+
 					</div>
 					<spring:url value="/resources/images/11.jpg" var="imageOfC"></spring:url>
-
 					<!-- Product -->
-					<div class="row products_aj">
+					<div class="row">
 						<c:forEach var="product" items="${products}">
+							<spring:url value="/resources/img/${product.id}.png"
+								var="imageOfC"></spring:url>
 							<div class="col-sm-12 col-md-6 col-lg-4 p-b-50">
 								<!-- Block2 -->
 								<div
@@ -167,6 +173,12 @@
 									<img src="${imageOfC}" alt="IMG-PRODUCT"> ${product.name}
 
 									<div class="block2-overlay trans-0-4">
+										<a href="#"
+											class="block2-btn-addwishlist hov-pointer trans-0-4"> <i
+											class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
+											<i class="icon-wishlist icon_heart dis-none"
+											aria-hidden="true"></i>
+										</a>
 
 										<div class="block2-btn-addcart w-size1 trans-0-4">
 											<!-- Button -->
@@ -203,6 +215,7 @@
 				</div>
 
 
+
 				<!-- Pagination -->
 				<div class="pagination flex-m flex-w p-t-26">
 					<a href="#"
@@ -215,81 +228,93 @@
 
 
 	<jsp:include page="footer.jsp" />
-	
+
 	<script type="text/javascript">
-		$(document).ready(function () {
+		$(document).ready(function() {
 			var minPrice = 0;
-	    	var maxPrice = 1000000000;
+			var maxPrice = 1000000000;
 			// filter by price
-		    $('.btn_price_filter').on('click', function(){
-		    	console.log('entered');
-		    	
-		    	minPrice = $('.min').val();
-		    	maxPrice = $('.max').val();
-		    	
-		    	console.log(minPrice);
-		    	console.log(maxPrice);
-		    	
-		    	$.ajax({
-		    		url: '<spring:url value="/product/ajax/filter" />',
-		            data: {
-		                'minPrice': minPrice,
-		                'maxPrice': maxPrice
-		            },
-		            success: function (data) {
-		            	$('.products_aj').html(data);
-		            }
-		            
-		    	});
-		    });
-		    
-		    // filter by name
-		    $('.btn_name_filter').on('click', function(){
-		    	console.log('entered');
-		    	
-		    	var name = $('.name').val();
-		    	
-		    	console.log(name);
-		    	
-		    	
-		    	$.ajax({
-		    		url: '<spring:url value="/product/ajax/filterByName" />',
-		            data: {
-		                'name': name
-		            },
-		            success: function (data) {
-		            	$('.products_aj').html(data);
-		            }
-		            
-		    	});
-		    });
-		    
-		 // search
-		    $('.btn_search').on('click', function(){
-		    	console.log('entered');
-		    	
-		    	var query = $('.search_product').val();
-		    	
-		    	console.log(minPrice);
-		    	console.log(maxPrice);
-		    	console.log(query);
-		    	
-		    	$.ajax({
-		    		url: '<spring:url value="/product/ajax/search" />',
-		            data: {
-		                'minPrice': minPrice,
-		                'maxPrice': maxPrice,
-		                'query': query
-		            },
-		            success: function (data) {
-		            	$('.products_aj').html(data);
-		            }
-		            
-		    	});
-		    });
-		    
+			$('.btn_price_filter').on('click', function() {
+				console.log('entered');
+
+				minPrice = $('.min').val();
+				maxPrice = $('.max').val();
+
+				console.log(minPrice);
+				console.log(maxPrice);
+
+				$.ajax({
+					url : '<spring:url value="/product/ajax/filter" />',
+					data : {
+						'minPrice' : minPrice,
+						'maxPrice' : maxPrice
+					},
+					success : function(data) {
+						$('.products_aj').html(data);
+					}
+
+				});
+			});
+
+			// filter by name
+			$('.btn_name_filter').on('click', function() {
+				console.log('entered');
+
+				var name = $('.name').val();
+
+				console.log(name);
+
+				$.ajax({
+					url : '<spring:url value="/product/ajax/filterByName" />',
+					data : {
+						'name' : name
+					},
+					success : function(data) {
+						$('.products_aj').html(data);
+					}
+
+				});
+			});
+
+			// search
+			$('.btn_search').on('click', function() {
+				console.log('entered');
+
+				var query = $('.search_product').val();
+
+				console.log(minPrice);
+				console.log(maxPrice);
+				console.log(query);
+
+				$.ajax({
+					url : '<spring:url value="/product/ajax/search" />',
+					data : {
+						'minPrice' : minPrice,
+						'maxPrice' : maxPrice,
+						'query' : query
+					},
+					success : function(data) {
+						$('.products_aj').html(data);
+					}
+
+				});
+			});
+
+			$('#btnAdd').on('click', function(id) {
+				$.ajax({
+					url : '<spring:url value="/addCartItem" />',
+					data : {
+						'id' : id
+					},
+					success : function(data) {
+						$('.products_aj').html(data);
+					}
+
+				});
+			});
+
 		});
 	</script>
-	
+
 </body>
 </html>

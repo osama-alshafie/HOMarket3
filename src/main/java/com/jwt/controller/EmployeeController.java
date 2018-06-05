@@ -32,6 +32,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -181,6 +182,13 @@ public class EmployeeController {
 		orderService.CreateOrder(order);
 		redirectAttributes.addFlashAttribute("orderss", order);
 		return "redirect:/order";
+	}
+
+	@RequestMapping(value = "/addCartItem", method = RequestMethod.POST)
+	@ResponseBody
+	public Cart CartPostFromAjax(@ModelAttribute Cart cart, Model models, @RequestParam("address") String address) {
+
+		return null;
 	}
 
 	@RequestMapping(value = "/product-detail/{id}", method = RequestMethod.GET)
