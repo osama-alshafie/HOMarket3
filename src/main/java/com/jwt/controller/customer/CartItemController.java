@@ -1,5 +1,8 @@
 package com.jwt.controller.customer;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +17,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.portlet.ModelAndView;
 
 import com.jwt.model.Cart;
+import com.jwt.model.CartItem;
+import com.jwt.model.CustomCartItem;
 import com.jwt.service.CartService;
 import com.jwt.service.ProductService;
 
@@ -24,8 +29,8 @@ public class CartItemController {
 	@Autowired
 	private CartService cartService;
 
-	@Autowired
-	private ProductService productService;
+	// @Autowired
+	// private ProductService productService;
 
 	@RequestMapping(method = RequestMethod.POST)
 	public String ProductDetailsPost(Model model, @RequestParam("counter") int counter,
@@ -35,12 +40,24 @@ public class CartItemController {
 		return "redirect:/customer/cart";
 	}
 
-	// @ResponseBody
+	@ResponseBody
 	@RequestMapping(value = "/ajax/add", method = RequestMethod.GET)
-	public String CartPostFromAjax(ModelAndView model, @RequestParam("id") int id) {
+	public List<CustomCartItem> CartPostFromAjax(ModelAndView model, @RequestParam("id") int id) {
+
+		List<CustomCartItem> customCartItem = new ArrayList<CustomCartItem>();
+		
 
 		cartService.EditCart(1, id);
 
-		return " ";
+		List<CartItem> CartItems = cartService.getCartByCustomer().getCartItemList();
+		for (CartItem cartItem : CartItems) {
+			if (cartItem.isDeleted() == false) {
+				customCartItem.add(new CustomCartItem(cartItem.getProduct().getName(),
+						cartItem.getQuantity() * cartItem.getProduct().getPrice()));
+			}
+		}
+
+		return customCartItem;
+
 	}
 }

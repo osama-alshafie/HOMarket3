@@ -41,21 +41,32 @@ public class CartDAOImpl implements CartDao {
 
 	@Override
 	public void EditCart(int counter, int id) {
-
-		CartItem cartItem = new CartItem();
-
-		cartItem.setProduct(productService.getProductById(id));
-		cartItem.setQuantity(counter);
-
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		User user = (User) authentication.getPrincipal();
 		Customer customUser = customerService.getCustomerByName(user.getUsername());
 		Cart cart = customUser.getCart();
-		cartItem.setDeleted(false);
-		cart.getCartItemList().add(cartItem);
-		cartItem.setCart(cart);
+		Product product = productService.getProductById(id);
 
-		sessionFactory.getCurrentSession().saveOrUpdate(cart);
+		List<CartItem> cartItems = cart.getCartItemList();
+
+		for (CartItem cartItem : cartItems) {
+			if (cartItem.getProduct().getName().equals(product.getName())) {
+				CartItem newcartItem = new CartItem();
+				newcartItem.setProduct(product);
+				newcartItem.setQuantity(counter);
+				newcartItem.setDeleted(false);
+				cart.getCartItemList().add(newcartItem);
+				newcartItem.setCart(cart);
+			} else {
+				cartItem.setQuantity(cartItem.getQuantity() + counter);
+				cart.getCartItemList().add(cartItem);
+				cartItem.setCart(cart);
+				sessionFactory.getCurrentSession().saveOrUpdate(cart);
+
+			}
+		}
+
+		// sessionFactory.getCurrentSession().saveOrUpdate(cart);
 
 	}
 

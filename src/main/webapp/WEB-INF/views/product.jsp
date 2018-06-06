@@ -188,6 +188,9 @@
 										</div>
 									</div>
 								</div>
+								<!--                <div id="getAllItems" > -->
+
+								<!--                </div> -->
 
 								<div class="block2-txt p-t-20">
 									<a href='<spring:url value="/product/details/${product.id}" />'
@@ -310,12 +313,11 @@
 						'id' : product_id
 					},
 					success : function(data) {
-						$('.products_aj').html(data);
+						console.log('return');
+						console.log(data);
 					}
-
 				});
 			});
-
 		});
 	</script>
 
