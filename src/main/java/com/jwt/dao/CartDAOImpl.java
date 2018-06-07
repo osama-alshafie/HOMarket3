@@ -46,27 +46,32 @@ public class CartDAOImpl implements CartDao {
 		Customer customUser = customerService.getCustomerByName(user.getUsername());
 		Cart cart = customUser.getCart();
 		Product product = productService.getProductById(id);
+		CartItem newcartItem = new CartItem();
 
 		List<CartItem> cartItems = cart.getCartItemList();
-
+		boolean notExists = true;
 		for (CartItem cartItem : cartItems) {
-			if (cartItem.getProduct().getName().equals(product.getName())) {
-				CartItem newcartItem = new CartItem();
-				newcartItem.setProduct(product);
-				newcartItem.setQuantity(counter);
-				newcartItem.setDeleted(false);
-				cart.getCartItemList().add(newcartItem);
-				newcartItem.setCart(cart);
-			} else {
-				cartItem.setQuantity(cartItem.getQuantity() + counter);
-				cart.getCartItemList().add(cartItem);
-				cartItem.setCart(cart);
-				sessionFactory.getCurrentSession().saveOrUpdate(cart);
-
+			if (!cartItem.isDeleted()) {
+				if (cartItem.getProduct().getId() == product.getId()) {
+					cartItem.setQuantity(cartItem.getQuantity() + counter);
+					notExists = false;
+					break;
+				} else {
+					notExists = true;
+				}
 			}
 		}
-
-		// sessionFactory.getCurrentSession().saveOrUpdate(cart);
+		
+		if(notExists){
+			newcartItem.setProduct(product);
+			newcartItem.setQuantity(counter);
+			newcartItem.setDeleted(false);
+			cart.getCartItemList().add(newcartItem);
+			newcartItem.setCart(cart);
+			System.out.println("inside of  loop of cartItem");
+		}
+		
+		sessionFactory.getCurrentSession().saveOrUpdate(cart);
 
 	}
 
