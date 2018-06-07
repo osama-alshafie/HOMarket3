@@ -200,7 +200,7 @@
 								</div>
 
 								<a href='<spring:url value="/product/details/${product.id}" />'>
-									ADD To Cart </a>
+									VIEW ALL DETAILS </a>
 								<sec:authorize access="hasRole('ROLE_ADMIN')">
 
 									<div>
@@ -315,6 +315,19 @@
 					success : function(data) {
 						console.log('return');
 						console.log(data);
+						console.log(data[0]);
+						console.log(typeof(data[0]));
+						console.log(data.length);
+						$('.cartItemNumber').html(data.length);
+						var cartItems = '';
+						var total = 0;
+						for(item in data) {
+							total += parseFloat(data[item].totalPrice);
+							cartItems += '<li class="header-cart-item"><div class="header-cart-item-img"><img src=\'<spring:url value="/resources/images/item-cart-01.jpg" />\' alt="IMG"></div><div class="header-cart-item-txt"><a href="#" class="header-cart-item-name">' + data[item].name + '</a><span class="header-cart-item-info"> $' + data[item].totalPrice + '</span></div></li>';
+						}
+						$('.header-cart .header-cart-wrapitem').html(cartItems);
+						$('.header-cart .header-cart-total').html(total);
+						
 					}
 				});
 			});

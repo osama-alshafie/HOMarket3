@@ -71,7 +71,7 @@
     <!-- Logo -->
     <a href='<spring:url value="/" />' class="logo">
 <!--         HOHMarket -->
-<%--         <img src='<spring:url value="resources/images/icons/logo.png" />' alt="IMG-LOGO" /> --%>
+<%--         <img src='<spring:url value="/resources/images/icons/logo.png" />' alt="IMG-LOGO" /> --%>
     </a>
     
     <!-- Menu -->
@@ -127,21 +127,21 @@
     <!-- Header Icon -->
     <div class="header-icons">
         <a href="#" class="header-wrapicon1 dis-block">
-            <img src='<spring:url value="resources/images/icons/icon-header-01.png" />' class="header-icon1" alt="ICON">
+            <img src='<spring:url value="/resources/images/icons/icon-header-01.png" />' class="header-icon1" alt="ICON">
         </a>
 
         <span class="linedivide1"></span>
 
         <div class="header-wrapicon2">
-            <img src='<spring:url value="resources/images/icons/icon-header-02.png" />' class="header-icon1 js-show-header-dropdown" alt="ICON">
-            <span class="header-icons-noti">0</span>
+            <img src='<spring:url value="/resources/images/icons/icon-header-02.png" />' class="header-icon1 js-show-header-dropdown" alt="ICON">
+            <span class="header-icons-noti cartItemNumber">0</span>
 
             <!-- Header cart noti -->
             <div class="header-cart header-dropdown">
                 <ul class="header-cart-wrapitem">
                     <li class="header-cart-item">
                         <div class="header-cart-item-img">
-                            <img src='<spring:url value="resources/images/item-cart-01.jpg" />' alt="IMG">
+                            <img src='<spring:url value="/resources/images/item-cart-01.jpg" />' alt="IMG">
                         </div>
 
                         <div class="header-cart-item-txt">
@@ -157,7 +157,7 @@
 
                     <li class="header-cart-item">
                         <div class="header-cart-item-img">
-                            <img src='<spring:url value="resources/images/item-cart-02.jpg" />' alt="IMG">
+                            <img src='<spring:url value="/resources/images/item-cart-02.jpg" />' alt="IMG">
                         </div>
 
                         <div class="header-cart-item-txt">
@@ -173,7 +173,7 @@
 
                     <li class="header-cart-item">
                         <div class="header-cart-item-img">
-                            <img src='<spring:url value="resources/images/item-cart-03.jpg" />' alt="IMG">
+                            <img src='<spring:url value="/resources/images/item-cart-03.jpg" />' alt="IMG">
                         </div>
 
                         <div class="header-cart-item-txt">
@@ -195,14 +195,14 @@
                 <div class="header-cart-buttons">
                     <div class="header-cart-wrapbtn">
                         <!-- Button -->
-                        <a href="cart.jsp" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+                        <a href='<spring:url value="/customer/cart" />' class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
                             View Cart
                         </a>
                     </div>
 
                     <div class="header-cart-wrapbtn">
                         <!-- Button -->
-                        <a href="#" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+                        <a href='<spring:url value="/customer/cart" />' class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
                             Check Out
                         </a>
                     </div>
@@ -229,7 +229,7 @@
             <!-- Logo2 -->
             <a href='<spring:url value="/" />' class="logo2">
 <!--                 <img src="images/icons/logo.png" alt="IMG-LOGO"> -->
-                <img src='<spring:url value="resources/images/icons/logo.png" />' alt="IMG-LOGO" />
+                <img src='<spring:url value="/resources/images/icons/logo.png" />' alt="IMG-LOGO" />
             </a>
 
             <div class="topbar-child2">
@@ -246,14 +246,14 @@
 
                 <!--  -->
                 <a href="#" class="header-wrapicon1 dis-block m-l-30">
-                    <img src='<spring:url value="resources/images/icons/icon-header-01.png" />' class="header-icon1" alt="ICON">
+                    <img src='<spring:url value="/resources/images/icons/icon-header-01.png" />' class="header-icon1" alt="ICON">
                 </a>
 
                 <span class="linedivide1"></span>
 
                 <div class="header-wrapicon2 m-r-13">
-                    <img src='<spring:url value="resources/images/icons/icon-header-02.png" />' class="header-icon1 js-show-header-dropdown" alt="ICON">
-                    <span class="header-icons-noti">0</span>
+                    <img src='<spring:url value="/resources/images/icons/icon-header-02.png" />' class="header-icon1 js-show-header-dropdown" alt="ICON">
+                    <span id='cartItemNumber' class="header-icons-noti cartItemNumber">0</span>
 
                     <!-- Header cart noti -->
                     <div class="header-cart header-dropdown">
@@ -314,14 +314,14 @@
                         <div class="header-cart-buttons">
                             <div class="header-cart-wrapbtn">
                                 <!-- Button -->
-                                <a href="cart.jsp" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+                                <a href='<spring:url value="/customer/cart" />' class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
                                     View Cart
                                 </a>
                             </div>
 
                             <div class="header-cart-wrapbtn">
                                 <!-- Button -->
-                                <a href="#" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+                                <a href='<spring:url value="/customer/cart" />' class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
                                     Check Out
                                 </a>
                             </div>
