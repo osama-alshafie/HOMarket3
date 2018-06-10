@@ -85,6 +85,8 @@
 					<!-- Product -->
 					<div class="row">
 						<c:forEach var="product" items="${products}">
+						<spring:url value="/resources/img/${product.id}.png"
+								var="imageOfC"></spring:url>
 							<div class="col-sm-12 col-md-6 col-lg-4 p-b-50">
 								<!-- Block2 -->
 								<div
