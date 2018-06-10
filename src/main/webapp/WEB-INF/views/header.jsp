@@ -140,9 +140,7 @@
             <div class="header-cart header-dropdown">
                 <ul class="header-cart-wrapitem">
                     <li class="header-cart-item">
-                        <div class="header-cart-item-img">
-                            <img src='<spring:url value="/resources/images/item-cart-01.jpg" />' alt="IMG">
-                        </div>
+                        
 
                         <div class="header-cart-item-txt">
                             <a href="#" class="header-cart-item-name">
@@ -156,9 +154,7 @@
                     </li>
 
                     <li class="header-cart-item">
-                        <div class="header-cart-item-img">
-                            <img src='<spring:url value="/resources/images/item-cart-02.jpg" />' alt="IMG">
-                        </div>
+                        
 
                         <div class="header-cart-item-txt">
                             <a href="#" class="header-cart-item-name">
@@ -172,9 +168,7 @@
                     </li>
 
                     <li class="header-cart-item">
-                        <div class="header-cart-item-img">
-                            <img src='<spring:url value="/resources/images/item-cart-03.jpg" />' alt="IMG">
-                        </div>
+                        
 
                         <div class="header-cart-item-txt">
                             <a href="#" class="header-cart-item-name">
@@ -200,12 +194,7 @@
                         </a>
                     </div>
 
-                    <div class="header-cart-wrapbtn">
-                        <!-- Button -->
-                        <a href='<spring:url value="/customer/cart" />' class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
-                            Check Out
-                        </a>
-                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -228,7 +217,7 @@
 
             <!-- Logo2 -->
             <a href='<spring:url value="/" />' class="logo2">
-<!--                 <img src="images/icons/logo.png" alt="IMG-LOGO"> -->
+<!--                 <img src="images/icons/logo.png" alt="IMG-LOGO">  -->
                 <img src='<spring:url value="/resources/images/icons/logo.png" />' alt="IMG-LOGO" />
             </a>
 
@@ -237,12 +226,12 @@
 						admin@hohmarket.com
 					</span>
 
-                <div class="topbar-language rs1-select2">
-                    <select class="selection-1" name="time">
-                        <option>USD</option>
-                        <option>EUR</option>
-                    </select>
-                </div>
+<!--                 <div class="topbar-language rs1-select2"> -->
+<!--                     <select class="selection-1" name="time"> -->
+<!--                         <option>USD</option> -->
+<!--                         <option>EUR</option> -->
+<!--                     </select> -->
+<!--                 </div> -->
 
                 <!--  -->
                 <a href="#" class="header-wrapicon1 dis-block m-l-30">
@@ -259,9 +248,9 @@
                     <div class="header-cart header-dropdown">
                         <ul class="header-cart-wrapitem">
                             <li class="header-cart-item">
-                                <div class="header-cart-item-img">
-                                    <img src="images/item-cart-01.jpg" alt="IMG">
-                                </div>
+<!--                                 <div class="header-cart-item-img"> -->
+<!--                                     <img src="images/item-cart-01.jpg" alt="IMG"> -->
+<!--                                 </div> -->
 
                                 <div class="header-cart-item-txt">
                                     <a href="#" class="header-cart-item-name">
@@ -275,9 +264,9 @@
                             </li>
 
                             <li class="header-cart-item">
-                                <div class="header-cart-item-img">
-                                    <img src="images/item-cart-02.jpg" alt="IMG">
-                                </div>
+<!--                                 <div class="header-cart-item-img"> -->
+<!--                                     <img src="images/item-cart-02.jpg" alt="IMG"> -->
+<!--                                 </div> -->
 
                                 <div class="header-cart-item-txt">
                                     <a href="#" class="header-cart-item-name">
@@ -291,9 +280,9 @@
                             </li>
 
                             <li class="header-cart-item">
-                                <div class="header-cart-item-img">
-                                    <img src="images/item-cart-03.jpg" alt="IMG">
-                                </div>
+<!--                                 <div class="header-cart-item-img"> -->
+<!--                                     <img src="images/item-cart-03.jpg" alt="IMG"> -->
+<!--                                 </div> -->
 
                                 <div class="header-cart-item-txt">
                                     <a href="#" class="header-cart-item-name">
@@ -319,12 +308,12 @@
                                 </a>
                             </div>
 
-                            <div class="header-cart-wrapbtn">
-                                <!-- Button -->
-                                <a href='<spring:url value="/customer/cart" />' class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
-                                    Check Out
-                                </a>
-                            </div>
+<!--                             <div class="header-cart-wrapbtn"> -->
+<!--                                 Button -->
+<%--                                 <a href='<spring:url value="/customer/cart" />' class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4"> --%>
+<!--                                     Check Out -->
+<!--                                 </a> -->
+<!--                             </div> -->
                         </div>
                     </div>
                 </div>

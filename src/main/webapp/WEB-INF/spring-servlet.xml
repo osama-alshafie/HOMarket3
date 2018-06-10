@@ -72,7 +72,7 @@
 	</bean>
 
 	<import resource="security-config.xml" />
-	<mvc:resources mapping="/resources/**" location="WEB-INF/resources/" />
+	<mvc:resources mapping="/resources/**" location="/WEB-INF/resources/" />
 	
 	
 	
