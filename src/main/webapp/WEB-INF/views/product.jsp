@@ -162,7 +162,7 @@
 					</div>
 					<spring:url value="/resources/images/11.jpg" var="imageOfC"></spring:url>
 					<!-- Product -->
-					<div class="row">
+					<div class="row products_aj">
 						<c:forEach var="product" items="${products}">
 							<spring:url value="/resources/img/${product.id}.png"
 								var="imageOfC"></spring:url>
@@ -260,24 +260,24 @@
 			});
 
 			// filter by name
-			$('.btn_name_filter').on('click', function() {
-				console.log('entered');
+// 			$('.btn_name_filter').on('click', function() {
+// 				console.log('entered');
 
-				var name = $('.name').val();
+// 				var name = $('.name').val();
 
-				console.log(name);
+// 				console.log(name);
 
-				$.ajax({
-					url : '<spring:url value="/product/ajax/filterByName" />',
-					data : {
-						'name' : name
-					},
-					success : function(data) {
-						$('.products_aj').html(data);
-					}
+// 				$.ajax({
+// 					url : '<spring:url value="/product/ajax/filterByName" />',
+// 					data : {
+// 						'name' : name
+// 					},
+// 					success : function(data) {
+// 						$('.products_aj').html(data);
+// 					}
 
-				});
-			});
+// 				});
+// 			});
 
 			// search
 			$('.btn_search').on('click', function() {

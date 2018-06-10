@@ -327,7 +327,7 @@
                 <nav class="menu">
                     <ul class="main_menu">
                         <li>
-                            <a href='<spring:url value="/"/>'>Home</a>
+                            <a href='<spring:url value="/"/>'><sec:authorize access="hasRole('ROLE_ADMIN')">Admin</sec:authorize> Home</a>
                         </li>
 
                         <li>

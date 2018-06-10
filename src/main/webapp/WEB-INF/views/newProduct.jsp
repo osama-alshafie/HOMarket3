@@ -184,7 +184,15 @@
 						<div class="size12 trans-0-4 m-t-10 m-b-10 m-r-10">
 							<button type="submit"
 								class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
-								new Product</button>
+								<c:choose>
+									<c:when test='${title=="New Product"}'>
+										new Product
+									</c:when>
+									<c:when test='${title=="Edit Product"}'>
+										edit Product
+									</c:when>
+								</c:choose>
+							</button>
 						</div>
 
 					</form:form>
