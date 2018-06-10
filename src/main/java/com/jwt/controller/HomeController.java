@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.jwt.model.Customer;
@@ -51,9 +52,18 @@ public class HomeController {
 	}
 	
 	@RequestMapping("/login")
-	public String login() {
+	public String login(@RequestParam(value = "error", required = false) String error,
+			@RequestParam(value = "logout", required = false) String logout, Model model) {
+		
+		if (error != null) {
+			model.addAttribute("error", "username or password is wrong.");
+		}
 
-		return "login";
+		if (logout != null) {
+			model.addAttribute("msg", "you have to logout.");
+		}
+		
+		return "c_login";
 	}
 	
 }
