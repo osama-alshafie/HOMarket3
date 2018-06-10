@@ -102,7 +102,7 @@
 			<div class="slick1">
 				<div class="item-slick1 item1-slick1"
 					style="background-image: url(<spring:url
-                    value="/resources/images/master-slide-07.jpg"></spring:url>);">
+                    value="/resources/images/55.jpg"></spring:url>);">
 					<div
 						class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
 						<h2
@@ -125,7 +125,7 @@
 
 				<div class="item-slick1 item2-slick1"
 					style="background-image: url(<spring:url
-                    value="/resources/images/master-slide-06.jpg"></spring:url>);">
+                    value="/resources/images/55.jpg"></spring:url>);">
 					<div
 						class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
 						<h2
@@ -196,11 +196,15 @@
 									<div class="block2">
 										<div
 											class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
-											<img src='<spring:url value="/resources/images/11.jpg" />'
+
+
+											<img
+												src='<spring:url value="/resources/img/${product.id}.png"
+								var="imageOfC"></spring:url>'
 												alt="IMG-PRODUCT">
 
 											<div class="block2-overlay trans-0-4">
-												
+
 
 												<div class="block2-btn-addcart w-size1 trans-0-4">
 													<!-- Button -->
