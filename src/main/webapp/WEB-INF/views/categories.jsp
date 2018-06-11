@@ -98,16 +98,18 @@
 					
 					<spring:url value="/resources/images/11.jpg" var="imageOfC"></spring:url>
 
-					<!-- Product -->
+					<!-- category -->
 					<div class="row">
 						<c:forEach var="category" items="${categories}">
 							<div class="col-sm-12 col-md-6 col-lg-4 p-b-50">
 								<!-- Block2 -->
+								
 								<div
 									class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
 									<img src="${imageOfC}" alt="IMG-PRODUCT"> ${category.name}
-
 								</div>
+								<a href='<spring:url value="/category/${category.id}" />'>
+									VIEW </a>
 							</div>
 						</c:forEach>
 					</div>

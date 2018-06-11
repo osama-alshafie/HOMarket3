@@ -113,6 +113,12 @@
 					${product.price}
 				</div>
 				<br>
+				<div class="flex-m flex-w">
+					<div class="s-text15 w-size15 t-center">Available Quantity</div>
+					${product.quantity}
+				</div>
+				<br>
+				
 
 				<!--  -->
 				<div class="p-t-33 p-b-60">
