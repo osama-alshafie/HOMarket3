@@ -110,7 +110,7 @@
 	                </li>
                 
                     <li>
-	                    <a href="<spring:url value="j_spring_security_check"></spring:url>">Log in</a>
+	                    <a href="<spring:url value="/login"></spring:url>">Log in</a>
 	                </li>
                 </sec:authorize>
                 
@@ -366,7 +366,7 @@
 	                        </li>
                         
 		                    <li>
-			                    <a href="<spring:url value="/spring_security_login"></spring:url>">Log in</a>
+			                    <a href="<spring:url value="/login"></spring:url>">Log in</a>
 			                </li>
 		                </sec:authorize>
 		                

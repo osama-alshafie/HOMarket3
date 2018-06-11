@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <%@ include file="/WEB-INF/views/Layout/TagLib.jsp"%>
+			
 <title>Log in</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -73,45 +74,49 @@
 
 </head>
 <body>
+	<jsp:include page="header.jsp" />
 	<div class="container-fluid">
 		<div class="overlay">
 
-			
-		<div class="row sign" style="padding-bottom: 30px;">
-			
-			<div class="container col-lg-4 col-lg-offset-4 "
-				style="text-align: center;">
+			<div class="row sign" style="padding-bottom: 30px;">
+	
 
-				<div class="input-text">
-					<spring:url value="/registeration" var="url" />
+				<div class="container col-lg-4 col-lg-offset-4 "
+					style="text-align: center;">
+
+					<div class="input-text">
+						<spring:url value="/registeration" var="url" />
 
 
-					<p>	Please enter your Username & Password!</p>
-					<br /> <br />
-					
-					<form name='f' action='<spring:url value="/j_spring_security_check"></spring:url>' method='POST'>
-				      <table>
-				         <tr>
-				            <td>User:</td>
-				            <td><input type='text' name='j_username' value=''></td>
-				         </tr>
-				         <tr>
-				            <td>Password:</td>
-				            <td><input type='password' name='j_password' /></td>
-				         </tr>
-				         <tr>
-				            <td><input name="submit" type="submit" value="submit" /></td>
-				         </tr>
-				      </table>
-				  </form>
+						<p>Please enter your Username & Password!</p>
+						<br /> <br />
 
+						<form name='f'
+							action='<spring:url value="/j_spring_security_check"></spring:url>'
+							method='POST'>
+							<div class="form-group col-lg-12 col-lg-offset-0">
+								<label>User:</label> <input type='text'
+									Class="form-control pass" name='j_username' value=''>
+							</div>
+							Password:
+							<div class="form-group col-lg-12 col-lg-offset-0">
+								<input type='password' Class="form-control pass"
+									name='j_password' />
+							</div>
+							<div class="form-group col-lg-12 col-lg-offset-3">
+								<input name="submit" type="submit" value="login"
+									class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4" />
+							</div>
+						</form>
+
+					</div>
+					<!-- ------------------------------------------------------------------- -->
 				</div>
-				<!-- ------------------------------------------------------------------- -->
 			</div>
 		</div>
 	</div>
-	
-	
+
+
 
 </body>
 </html>
