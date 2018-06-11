@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <%@ include file="/WEB-INF/views/Layout/TagLib.jsp"%>
-			
+
 <title>Log in</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -74,12 +74,11 @@
 
 </head>
 <body>
-	<jsp:include page="header.jsp" />
 	<div class="container-fluid">
 		<div class="overlay">
 
 			<div class="row sign" style="padding-bottom: 30px;">
-	
+
 
 				<div class="container col-lg-4 col-lg-offset-4 "
 					style="text-align: center;">

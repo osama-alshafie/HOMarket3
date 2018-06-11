@@ -19,7 +19,7 @@ public class ProducttDAOImpl implements ProductDao {
 	@Override
 	public void AddProduct(Product product) {
 
-		sessionFactory.getCurrentSession().save(product);
+		sessionFactory.getCurrentSession().saveOrUpdate(product);
 	}
 
 	@Override
@@ -70,7 +70,8 @@ public class ProducttDAOImpl implements ProductDao {
 
 	@Override
 	public List<Product> filterProducts(String name, float min, float max) {
-		Query q = sessionFactory.getCurrentSession().createQuery("from Product where price>:min and price<:max and name LIKE :name");
+		Query q = sessionFactory.getCurrentSession()
+				.createQuery("from Product where price>:min and price<:max and name LIKE :name");
 		q.setParameter("min", min);
 		q.setParameter("max", max);
 		q.setParameter("name", "%" + name + "%");

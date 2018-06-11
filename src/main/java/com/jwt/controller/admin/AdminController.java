@@ -94,15 +94,10 @@ public class AdminController {
 			return "newProduct";
 		}
 
-		// service here
 		adminService.updateProduct(product.getSelectedCheckBox(), product);
-
-		// image configuration
-		// image configuration
 		// image configuration
 		MultipartFile productImage = product.getProductImage();
 		String rootDir = req.getSession().getServletContext().getRealPath("/");
-		// String filePath = req.getServletContext().getRealPath("/");
 		path = Paths.get(rootDir + "\\WEB-INF\\resources\\img\\" + product.getId() + ".png");
 		String destinatino = path.toString();
 		if (productImage != null && !productImage.isEmpty()) {
@@ -115,20 +110,21 @@ public class AdminController {
 			}
 		}
 
-		return "redirect:/admin";
+		return "redirect:/product/all";
 	}
 
 	@RequestMapping(value = "/product/delete/{id}", method = RequestMethod.GET)
 	public String deleteProduct(Model model, @PathVariable("id") int id) {
-		// Product product = productService.getProductById(id);
 		productService.deleteProduct(id);
 
-		return "redirect:/admin/productInventory";
+		return "redirect:/product/all";
 	}
 
 	@RequestMapping(value = "/product/edit/{id}", method = RequestMethod.GET)
 	public String editProduct(Model model, @PathVariable("id") int id) {
 		Product product = productService.getProductById(id);
+
+		model.addAttribute("categories", categoryService.getAllCategories());
 		model.addAttribute("title", "Edit Product");
 		model.addAttribute("headerMSG", "Edit the Product");
 		model.addAttribute("product", product);
@@ -141,7 +137,10 @@ public class AdminController {
 		if (br.hasErrors()) {
 			return "newProduct";
 		}
-		productService.updateProduct(product);
+
+		adminService.updateProduct(product.getSelectedCheckBox(), product);
+		// productService.updateProduct(product);
+
 		MultipartFile productImage = product.getProductImage();
 		String rootDir = req.getSession().getServletContext().getRealPath("/");
 		path = Paths.get(rootDir + "\\WEB-INF\\resources\\img\\" + product.getId() + ".png");
@@ -155,7 +154,7 @@ public class AdminController {
 				throw new RuntimeException("saving file is failed", e);
 			}
 		}
-		return "redirect:/admin/productInventory";
+		return "redirect:/product/all";
 	}
 
 	@RequestMapping(value = "/customers", method = RequestMethod.GET)

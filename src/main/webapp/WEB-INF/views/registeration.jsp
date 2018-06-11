@@ -87,12 +87,10 @@
 								class="icon-bar"></span> <span class="icon-bar"></span> <span
 								class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="#">Online Exam</a>
 					</div>
 				</div>
 				<!-- /.navbar-collapse -->
 		</div>
-		<!-- /.container-fluid -->
 		</nav>
 		<div class="row sign" style="padding-bottom: 30px;">
 			<div class="row " style="padding-top: 60px; margin-top: 20px;">
@@ -107,7 +105,9 @@
 					<spring:url value="/registeration" var="url" />
 
 
-					<p>Welcome To Registeration page</p>
+					<h3>
+						 Registeration page
+					</h3>
 					<br /> <br />
 
 					<form:form commandName="customer" cssClass="subscribe"
@@ -154,6 +154,7 @@
 			</div>
 		</div>
 	</div>
+
 	<!-- 	Back to top -->
 	<div class="btn-back-to-top bg0-hov" id="myBtn">
 		<span class="symbol-btn-back-to-top"> <i
@@ -172,8 +173,9 @@
 		var="kmhome1"></spring:url>
 	<script src="${kmhome1}"></script>
 	<!--===============================================================================================-->
-<spring:url value="/resources/vendor/jquery/jquery.validate.min.js" var="kmhome1"></spring:url>
-<script src="${kmhome1}"></script>
+	<spring:url value="/resources/vendor/jquery/jquery.validate.min.js"
+		var="kmhome1"></spring:url>
+	<script src="${kmhome1}"></script>
 	<!-- 	=============================================================================================== -->
 	<spring:url value="/resources/vendor/animsition/js/animsition.min.js"
 		var="kmhome2"></spring:url>
@@ -237,31 +239,31 @@
 	<!-- 	=============================================================================================== -->
 	<spring:url value="/resources/js/main.js" var="kmhome13"></spring:url>
 	<script src="${kmhome13}"></script>
-	
+
 	<script type="text/javascript">
-		$(document).ready(function () {
-		    $("#customer").validate({
-		        rules: {
-		            "name": {
-		                required: true,
-		                minlength: 3
-		            },
-		            "email": {
-		                required: true,
-		                email: true
-		            }
-		        },
-		        messages: {
-		            "name": {
-		                required: "Please, enter a name"
-		            },
-		            "email": {
-		                required: "Please, enter an email",
-		                email: "Email is invalid"
-		            }
-		        }
-		    });
-	
+		$(document).ready(function() {
+			$("#customer").validate({
+				rules : {
+					"name" : {
+						required : true,
+						minlength : 3
+					},
+					"email" : {
+						required : true,
+						email : true
+					}
+				},
+				messages : {
+					"name" : {
+						required : "Please, enter a name"
+					},
+					"email" : {
+						required : "Please, enter an email",
+						email : "Email is invalid"
+					}
+				}
+			});
+
 		});
 	</script>
 

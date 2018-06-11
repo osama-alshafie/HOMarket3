@@ -83,25 +83,15 @@
 		<div class="flex-w flex-sb">
 			<div class="w-size13 p-t-30 respon5">
 				<div class="wrap-slick3 flex-sb flex-w">
-					<div class="wrap-slick3-dots"></div>
 
 					<div class="slick3">
-						<div class="item-slick3" data-thumb="images/thumb-item-01.jpg">
-							<div class="wrap-pic-w">
-								<img src="images/product-detail-01.jpg" alt="IMG-PRODUCT">
-							</div>
-						</div>
 
-						<div class="item-slick3" data-thumb="images/thumb-item-02.jpg">
-							<div class="wrap-pic-w">
-								<img src="images/product-detail-02.jpg" alt="IMG-PRODUCT">
-							</div>
-						</div>
+						<div class="wrap-pic-w">
 
-						<div class="item-slick3" data-thumb="images/thumb-item-03.jpg">
-							<div class="wrap-pic-w">
-								<img src="images/product-detail-03.jpg" alt="IMG-PRODUCT">
-							</div>
+							<img
+								src="<spring:url value="/resources/img/${product.id}.png"
+								></spring:url>"
+								alt="IMG-PRODUCT">
 						</div>
 					</div>
 				</div>
@@ -131,8 +121,9 @@
 					</div>
 				</div>
 				<spring:url value="/customer/cartItem" var="url" />
-				<form class="form-horizontal" action="${url}" method="POST">
-				    <input type="hidden" name="productId" value="${product.id}" class="form-control">
+				<form  action="${url}" method="POST">
+					<input type="hidden" name="productId" value="${product.id}"
+						class="form-control">
 
 					<button class="btn-num-product-down color1 flex-c-m size7 bg8 eff2">
 						<i class="fs-12 fa fa-minus" aria-hidden="true"></i>
@@ -140,7 +131,7 @@
 
 					<input type="number" name="counter" value="1" max="${maxqtn}"
 						class="form-control">
-						
+
 
 					<button class="btn-num-product-up color1 flex-c-m size7 bg8 eff2">
 						<i class="fs-12 fa fa-plus" aria-hidden="true"></i>
