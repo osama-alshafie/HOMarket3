@@ -71,7 +71,7 @@
     <!-- Logo -->
     <a href='<spring:url value="/" />' class="logo">
 <!--         HOHMarket -->
-<%--         <img src='<spring:url value="/resources/images/icons/logo.png" />' alt="IMG-LOGO" /> --%>
+        <img src='<spring:url value="/resources/images/icons/logo.png" />' alt="IMG-LOGO" />
     </a>
     
     <!-- Menu -->
