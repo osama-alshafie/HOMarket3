@@ -54,6 +54,8 @@ public class CartDAOImpl implements CartDao {
 			if (!cartItem.isDeleted()) {
 				if (cartItem.getProduct().getId() == product.getId()) {
 					cartItem.setQuantity(cartItem.getQuantity() + counter);
+					product.setQuantity(product.getQuantity() - counter);
+					cartItem.setProduct(product);
 					notExists = false;
 					break;
 				} else {
@@ -61,16 +63,17 @@ public class CartDAOImpl implements CartDao {
 				}
 			}
 		}
-		
-		if(notExists){
+
+		if (notExists) {
 			newcartItem.setProduct(product);
 			newcartItem.setQuantity(counter);
+			newcartItem.getProduct().setQuantity(product.getQuantity() - counter);
 			newcartItem.setDeleted(false);
 			cart.getCartItemList().add(newcartItem);
 			newcartItem.setCart(cart);
 			System.out.println("inside of  loop of cartItem");
 		}
-		
+
 		sessionFactory.getCurrentSession().saveOrUpdate(cart);
 
 	}
